@@ -1,0 +1,143 @@
+# =============================================================================
+# Git Ignore Configuration
+# Front-End Web Project with Local Static Assets
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Operating System Junk
+# -----------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r\r
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# -----------------------------------------------------------------------------
+# Code Editors & IDE Configurations
+# -----------------------------------------------------------------------------
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains (PhpStorm, WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Common editor swap / backup files
+*.swp
+*.swo
+*.bak
+*~
+\#*\#
+.#*
+
+# -----------------------------------------------------------------------------
+# Environment & Secret Configurations
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.*
+# Allow example / template environment files to be committed
+!.env.example
+!.env.sample
+!.env.template
+
+# Credentials and keys
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+
+# -----------------------------------------------------------------------------
+# Package Managers & Dependencies
+# -----------------------------------------------------------------------------
+node_modules/
+jspm_packages/
+.pnp
+.pnp.js
+.pnpm-store/
+vendor/
+
+# -----------------------------------------------------------------------------
+# Logs & Diagnostics
+# -----------------------------------------------------------------------------
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -----------------------------------------------------------------------------
+# Build Outputs, Caches & Temporary Files
+# -----------------------------------------------------------------------------
+dist/
+build/
+coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+.turbo/
+.next/
+.nuxt/
+.output/
+.svelte-kit/
+.vite/
+.temp/
+temp/
+tmp/
+
+# -----------------------------------------------------------------------------
+# Static Assets & Web Fonts (Explicitly Tracked)
+# -----------------------------------------------------------------------------
+# Ensure assets/ and assets/fontawesome/ are tracked
+!assets/
+!assets/**
+!assets/fontawesome/
+!assets/fontawesome/**
+
+# Guarantee web fonts and stylesheets are never ignored
+!*.css
+!*.min.css
+!*.woff
+!*.woff2
+!*.ttf
+!*.eot
+!*.otf
+!*.svg

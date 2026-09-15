@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEAIT EduTech - Sectioning &amp; Schedule Blocking</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#ea580c',
+              hover: '#c2410c',
+              light: '#fff7ed',
+              dark: '#9a3412',
+            },
+            surface: '#f8f9fc',
+          },
+          fontFamily: {
+            sans: ['Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f8f9fc;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 bg-[#f8f9fc] flex flex-col antialiased">
+<!-- TOP BAR -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-white border-b border-slate-200 z-40 flex items-center justify-between px-6 pl-[280px]">
+<!-- Left Search & Term Badge -->
+<div class="flex items-center gap-4 flex-1 max-w-2xl">
+<div class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 cursor-pointer hover:bg-orange-100 transition">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>A.Y. 2024–2025 • 1st Semester</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full h-9 pl-10 pr-4 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent focus:bg-white transition" placeholder="Search Student No, Student Name, Applicant ID..." type="search"/>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4 shrink-0">
+<button class="flex items-center gap-1.5 bg-[#ea580c] hover:bg-[#c2410c] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Enrollment</span>
+</button>
+<button class="relative p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-600 ring-2 ring-white"></span>
+</button>
+<div class="h-8 w-px bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<img alt="Maria Santos" class="w-9 h-9 rounded-full object-cover border border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNOULzZW53CYmFOT742OArq-VH9D07gwKqs1Ulc5o9gm_UyyGrYfDqg3QpyZbcxsb1zCC2dSF18nSHyt6GD06vpTERsEAnSVw8zgTy_Bu2JZP_9VBD6FDJaCG8VxX7WeoePBsEP__0JIChNomVBBf-jmF-ZMOwwRTVmoJntQs8y8pPbm0Rh_15Zs7xlg-v3cjy-SgXqnLsgs3PHtYxlPsv_HuIfXLgBLG6U3aKJ_Vtoriuj__r12wh"/>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 leading-tight">Maria Santos</span>
+<span class="text-xs text-slate-500 font-medium">Registrar Staff</span>
+</div>
+</div>
+</div>
+</header>
+<!-- SIDEBAR NAVIGATION -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-white border-r border-slate-200 z-50 flex flex-col justify-between overflow-y-auto">
+<div>
+<!-- Brand Seal & Logo Header -->
+<div class="h-16 px-5 flex items-center gap-3 border-b border-slate-100">
+<img alt="SEAIT Official Seal" class="w-10 h-10 rounded-full object-cover shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAtANsT6hEiH5MYpzFp36gSGs6-gVGh2Aq4LFF3Y-yh5HZwyno55pt-pMls-I8Vp-wzwHFzD6ZQ0EhEztw-BdxMiJtInWjBDQwI5ggQ2PUUAZqt-vsPVAh_VDdhTje_NFyXWd3sP5PrDMyizZLdQbsVI6hxeSevMLM6AIpbMvWYTUf5ruUwlFrMtxxBZ9NRFbX38d4n18qIldbVL54j7I5sjHDso3Y4CLpHz-_8IZIYqA6wn3vI76ajVC7mrJ_BPbOhQ"/>
+<div class="flex flex-col min-w-0">
+<span class="text-[15px] font-bold tracking-tight text-slate-900 leading-none">
+            SEAIT <span class="text-[#ea580c]">EDUTECH</span>
+</span>
+<span class="text-[10px] tracking-wider text-slate-400 uppercase font-bold mt-1 leading-none">
+            ENROLMENT PLATFORM
+          </span>
+</div>
+</div>
+<!-- Navigation Category -->
+<div class="px-5 pt-5 pb-2">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Academic Navigation</span>
+</div>
+<!-- Nav Items -->
+<nav class="px-3 flex flex-col gap-1"><!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span>Dashboard / Overview</span>
+</a>
+<!-- 2. Admission & Registration -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+<span>Admission &amp; Registration</span>
+</a>
+<!-- 3. Academic Evaluation -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Academic Evaluation</span>
+</a>
+<!-- 4. Sectioning & Blocking (ACTIVE) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-[#ea580c] text-white text-sm font-semibold shadow-sm transition" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_view_week</span>
+<span>Sectioning &amp; Blocking</span>
+</a>
+<!-- 5. Enrollment & Payment -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Enrollment &amp; Payment</span>
+</a>
+<!-- 6. Student Directory -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span>Student Directory</span>
+</a></nav>
+</div>
+<!-- Bottom Terminal Status Badge Card -->
+<div class="p-3 m-3 bg-slate-50 border border-slate-200 rounded-xl">
+<div class="flex items-center gap-2 text-emerald-700 font-semibold text-xs mb-1">
+<span class="material-symbols-outlined text-[17px] text-emerald-600">verified_user</span>
+<span>Authorized Terminal</span>
+</div>
+<p class="text-[11px] text-slate-500 leading-normal">Office of the University Registrar • Official Record Access Tier 1</p>
+</div>
+</aside>
+<!-- MAIN BODY CONTAINER -->
+<div class="pl-[260px] pt-16 flex-1 flex flex-col">
+<main class="p-8 max-w-[1600px] w-full mx-auto space-y-6 flex-1"><!-- 1. PAGE HEADER & PIPELINE BANNER -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-5">
+<div class="space-y-2">
+<div class="flex items-center gap-2.5 flex-wrap text-xs">
+<span class="px-2.5 py-1 rounded bg-orange-100 text-orange-800 font-bold tracking-wider uppercase">
+              SECTIONING &amp; SCHEDULE BLOCKING PIPELINE
+            </span>
+<span class="text-slate-400">•</span>
+<span class="text-slate-600 font-medium">Ref: <strong class="text-slate-900 font-bold">BLK-2024-0412</strong></span>
+<span class="text-slate-400">•</span>
+<span class="text-slate-500 font-mono text-[11px]">Schema: blocking, section, schedule, enrollment_subject</span>
+<span class="text-slate-400">•</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 font-bold">
+<span class="w-2 h-2 rounded-full bg-[#ea580c] animate-pulse"></span>
+              Schedule In Progress
+            </span>
+</div>
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900">
+              Sectioning &amp; Schedule Blocking
+            </h1>
+<p class="text-sm text-slate-500 mt-0.5">
+              Assign Cohort Sections, Schedule Blocks, and Conflict-Free Subject Timetables • Student: <span class="font-bold text-slate-800">Dela Cruz, Juan Miguel S.</span> (ID: <span class="font-bold text-[#ea580c]">2024-10492</span> • BSIT 2nd Year)
+            </p>
+</div>
+</div>
+<!-- Fast Header Action Buttons -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<button class="px-4 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs flex items-center gap-1.5 transition shadow-sm" type="button">
+<span class="material-symbols-outlined text-[17px]">save</span>
+<span>Save Draft</span>
+</button>
+<button class="px-4 py-2 rounded-lg border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 font-semibold text-xs flex items-center gap-1.5 transition" type="button">
+<span class="material-symbols-outlined text-[17px]">restart_alt</span>
+<span>Reset Schedule</span>
+</button>
+<button class="px-5 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs flex items-center gap-2 transition shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Finalize &amp; Advance to Assessment</span>
+</button>
+</div>
+</div>
+<!-- 2. ACTIVE COHORT SELECTION BANNER -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+<div>
+<h2 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ea580c] text-[20px]">groups</span>
+<span>Available Program Cohort Sections (BSIT - 2nd Year • 1st Sem)</span>
+</h2>
+<p class="text-xs text-slate-400 mt-0.5">Select or switch student block group. Synchronized with table <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">section</code> and <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">blocking</code>.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center gap-1 transition" type="button">
+<span class="material-symbols-outlined text-[16px]">autorenew</span>
+<span>Auto-Assign Best Fit</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Cohort 1: BSIT-2A (Selected) -->
+<div class="p-4 rounded-xl border-2 border-[#ea580c] bg-orange-50/70 relative cursor-pointer shadow-sm transition">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-[#ea580c] text-white font-bold text-xs flex items-center justify-center">2A</span>
+<div>
+<span class="text-sm font-bold text-slate-900 block leading-tight">BSIT-2A</span>
+<span class="text-[11px] text-slate-500">Morning Cohort • Main Campus</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#ea580c] text-white">Active Block</span>
+</div>
+<div class="mt-3 pt-3 border-t border-orange-200 flex items-center justify-between text-xs">
+<span class="text-slate-600 font-medium">Enrolled: <strong class="text-slate-900">38 / 40</strong> (2 Slots Left)</span>
+<span class="text-[11px] font-bold text-orange-700 bg-white border border-orange-200 px-2 py-0.5 rounded">95% Full</span>
+</div>
+</div>
+<!-- Cohort 2: BSIT-2B -->
+<div class="p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-slate-300 relative cursor-pointer transition">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center">2B</span>
+<div>
+<span class="text-sm font-bold text-slate-900 block leading-tight">BSIT-2B</span>
+<span class="text-[11px] text-slate-500">Afternoon Cohort • Main Campus</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">Available</span>
+</div>
+<div class="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
+<span class="text-slate-600 font-medium">Enrolled: <strong class="text-slate-900">34 / 40</strong> (6 Slots Left)</span>
+<span class="text-[11px] font-bold text-slate-600 bg-white border border-slate-200 px-2 py-0.5 rounded">85% Full</span>
+</div>
+</div>
+<!-- Cohort 3: BSIT-2C -->
+<div class="p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-slate-300 relative cursor-pointer transition">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center">2C</span>
+<div>
+<span class="text-sm font-bold text-slate-900 block leading-tight">BSIT-2C</span>
+<span class="text-[11px] text-slate-500">Evening Track • Annex Building</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Open Slots</span>
+</div>
+<div class="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
+<span class="text-slate-600 font-medium">Enrolled: <strong class="text-slate-900">22 / 40</strong> (18 Slots Left)</span>
+<span class="text-[11px] font-bold text-slate-600 bg-white border border-slate-200 px-2 py-0.5 rounded">55% Full</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. MAIN WORKSPACE (2-COLUMN GRID) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: Timetable & Subject Units (8 Cols) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Section 1: Weekly Timetable & Schedule Matrix -->
+<section class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-orange-100 text-[#ea580c] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-slate-900">Weekly Timetable &amp; Schedule Matrix</h2>
+<p class="text-xs text-slate-400">Visual timetable mapping for <strong class="text-slate-700">BSIT-2A</strong> (A.Y. 2024–2025 • 1st Sem)</p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start sm:self-auto">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>No Schedule Conflicts Detected</span>
+</span>
+</div>
+</div>
+<!-- Timetable Subject Color Legend Bar -->
+<div class="flex items-center gap-2 flex-wrap pb-3 mb-4 border-b border-slate-100 text-[11px]">
+<span class="text-slate-400 font-bold uppercase">Course Legend:</span>
+<span class="px-2 py-0.5 rounded bg-orange-50 border border-orange-200 text-orange-800 font-semibold">IT201 OOP (Lab 302)</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-800 font-semibold">IT202 Data Struct (Lab 301)</span>
+<span class="px-2 py-0.5 rounded bg-amber-100 border border-orange-100 text-amber-700 font-semibold">IT203 DBMS (Lab 302)</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-semibold">GE104 Art Apprec (Rm 405)</span>
+<span class="px-2 py-0.5 rounded bg-orange-50 border border-orange-200 text-orange-700 font-semibold">IT204 Web Dev (Lab 301)</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-semibold">MATH201 (Rm 204)</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 border border-emerald-100 text-emerald-700 font-semibold">PE201 Gym</span>
+</div>
+<!-- Timetable Grid -->
+<div class="overflow-hidden border border-slate-200 rounded-xl">
+<div class="grid grid-cols-7 bg-slate-100 border-b border-slate-200 text-center text-xs font-bold text-slate-700 py-2.5">
+<div class="text-slate-400 font-mono">TIME</div>
+<div>MON</div>
+<div>TUE</div>
+<div>WED</div>
+<div>THU</div>
+<div>FRI</div>
+<div>SAT</div>
+</div>
+<!-- Row 1: 07:30 - 09:00 -->
+<div class="grid grid-cols-7 border-b border-slate-100 text-xs min-h-[64px] items-stretch">
+<div class="p-2 bg-slate-50 border-r border-slate-100 text-[11px] font-mono text-slate-400 flex items-center justify-center text-center leading-tight">
+07:30 - 09:00
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-orange-50 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-orange-800 text-[11px] leading-tight">IT201 (OOP)</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 302</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-50 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-800 text-[11px] leading-tight">GE104 Art App</span>
+<span class="text-[10px] text-slate-500 font-mono">Rm 405</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-orange-50 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-orange-800 text-[11px] leading-tight">IT201 (OOP)</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 302</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-50 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-800 text-[11px] leading-tight">GE104 Art App</span>
+<span class="text-[10px] text-slate-500 font-mono">Rm 405</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-orange-50 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-orange-800 text-[11px] leading-tight">IT201 (OOP)</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 302</span>
+</div>
+</div>
+<div class="p-1.5 bg-slate-50/50 flex items-center justify-center text-[10px] text-slate-300 font-medium">
+---
+</div>
+</div>
+<!-- Row 2: 09:00 - 10:30 -->
+<div class="grid grid-cols-7 border-b border-slate-100 text-xs min-h-[64px] items-stretch">
+<div class="p-2 bg-slate-50 border-r border-slate-100 text-[11px] font-mono text-slate-400 flex items-center justify-center text-center leading-tight">
+09:00 - 10:30
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-100 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-900 text-[11px] leading-tight">IT202 Data Struct</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 301</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-50 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-800 text-[11px] leading-tight">MATH201 Discrete</span>
+<span class="text-[10px] text-slate-500 font-mono">Rm 204</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-100 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-900 text-[11px] leading-tight">IT202 Data Struct</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 301</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-50 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-800 text-[11px] leading-tight">MATH201 Discrete</span>
+<span class="text-[10px] text-slate-500 font-mono">Rm 204</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-slate-100 border border-slate-200 flex flex-col justify-between">
+<span class="font-bold text-slate-900 text-[11px] leading-tight">IT202 Data Struct</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 301</span>
+</div>
+</div>
+<div class="p-1.5 bg-slate-50/50 flex items-center justify-center text-[10px] text-slate-300 font-medium">
+---
+</div>
+</div>
+<!-- Row 3: 10:30 - 12:00 -->
+<div class="grid grid-cols-7 border-b border-slate-100 text-xs min-h-[64px] items-stretch">
+<div class="p-2 bg-slate-50 border-r border-slate-100 text-[11px] font-mono text-slate-400 flex items-center justify-center text-center leading-tight">
+10:30 - 12:00
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-amber-100/70 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-amber-700 text-[11px] leading-tight">IT203 DBMS</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 302</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100 bg-slate-50/40 flex items-center justify-center text-[10px] text-slate-300">
+---
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-amber-100/70 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-amber-700 text-[11px] leading-tight">IT203 DBMS</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 302</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100 bg-slate-50/40 flex items-center justify-center text-[10px] text-slate-300">
+---
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-amber-100/70 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-amber-700 text-[11px] leading-tight">IT203 DBMS</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 302</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-emerald-100 border border-emerald-100 flex flex-col justify-between">
+<span class="font-bold text-emerald-700 text-[11px] leading-tight">PE201 Fitness</span>
+<span class="text-[10px] text-slate-500 font-mono">Gymnasium</span>
+</div>
+</div>
+</div>
+<!-- LUNCH BREAK BANNER -->
+<div class="grid grid-cols-7 bg-orange-50/60 border-b border-slate-200 text-center text-[11px] font-bold text-orange-700 py-1.5">
+<div class="font-mono text-slate-400 font-normal">12:00 - 01:00</div>
+<div class="col-span-6 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">restaurant</span>
+<span>INSTITUTIONAL RECESS / CAMPUS COMMON ACTIVITY PERIOD</span>
+</div>
+</div>
+<!-- Row 4: 01:00 - 03:00 -->
+<div class="grid grid-cols-7 text-xs min-h-[64px] items-stretch">
+<div class="p-2 bg-slate-50 border-r border-slate-100 text-[11px] font-mono text-slate-400 flex items-center justify-center text-center leading-tight">
+01:00 - 02:30
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-orange-50 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-orange-700 text-[11px] leading-tight">IT204 Web Dev</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 301</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100 bg-slate-50/40 flex items-center justify-center text-[10px] text-slate-300">
+---
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-orange-50 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-orange-700 text-[11px] leading-tight">IT204 Web Dev</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 301</span>
+</div>
+</div>
+<div class="p-1.5 border-r border-slate-100 bg-slate-50/40 flex items-center justify-center text-[10px] text-slate-300">
+---
+</div>
+<div class="p-1.5 border-r border-slate-100">
+<div class="h-full p-2 rounded-lg bg-orange-50 border border-orange-200 flex flex-col justify-between">
+<span class="font-bold text-orange-700 text-[11px] leading-tight">IT204 Web Dev</span>
+<span class="text-[10px] text-slate-500 font-mono">Lab 301</span>
+</div>
+</div>
+<div class="p-1.5 bg-slate-50/50 flex items-center justify-center text-[10px] text-slate-300 font-medium">
+---
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Enrolled Subject Blocks & Unit Allocation -->
+<section class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-orange-100 text-[#ea580c] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-slate-900">Enrolled Subject Blocks &amp; Unit Allocation</h2>
+<p class="text-xs text-slate-400">Schema: <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">enrollment_subject</code>, <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">subject</code>, <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">schedule</code></p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-lg">
+Total Units: <strong class="text-[#ea580c]">21.0</strong> / 24.0 Max Allowed
+</span>
+</div>
+</div>
+<!-- Subjects Table -->
+<div class="overflow-x-auto border border-slate-200 rounded-xl mb-4">
+<table class="w-full text-left text-xs text-slate-700">
+<thead class="bg-slate-50 text-slate-500 font-bold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+<tr>
+<th class="p-3">Subject Code &amp; Title</th>
+<th class="p-3 text-center">Units</th>
+<th class="p-3">Schedule &amp; Days</th>
+<th class="p-3">Room / Venue</th>
+<th class="p-3 text-center">Status</th>
+<th class="p-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 font-medium">
+<!-- Subject 1 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">IT201 • Object-Oriented Programming</span>
+<span class="text-[10px] text-slate-400">Dept. of Computing Studies • Lecture + Lab</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">3.0</td>
+<td class="p-3 text-slate-600">MWF 07:30 - 09:00 AM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Lab 302</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+<!-- Subject 2 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">IT202 • Data Structures &amp; Algorithms</span>
+<span class="text-[10px] text-slate-400">Dept. of Computing Studies • Lecture + Lab</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">3.0</td>
+<td class="p-3 text-slate-600">MWF 09:00 - 10:30 AM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Lab 301</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+<!-- Subject 3 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">IT203 • Database Management Systems</span>
+<span class="text-[10px] text-slate-400">Dept. of Computing Studies • Lecture + Lab</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">3.0</td>
+<td class="p-3 text-slate-600">MWF 10:30 - 12:00 PM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Lab 302</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+<!-- Subject 4 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">IT204 • Web Systems and Technologies 1</span>
+<span class="text-[10px] text-slate-400">Dept. of Computing Studies • Lecture + Lab</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">3.0</td>
+<td class="p-3 text-slate-600">MWF 01:00 - 02:30 PM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Lab 301</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+<!-- Subject 5 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">GE104 • Art Appreciation</span>
+<span class="text-[10px] text-slate-400">General Education Core</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">3.0</td>
+<td class="p-3 text-slate-600">TTh 07:30 - 09:00 AM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Rm 405</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+<!-- Subject 6 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">MATH201 • Discrete Structures &amp; Mathematics</span>
+<span class="text-[10px] text-slate-400">Dept. of Mathematics &amp; Statistics</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">3.0</td>
+<td class="p-3 text-slate-600">TTh 09:00 - 10:30 AM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Rm 204</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+<!-- Subject 7 -->
+<tr class="hover:bg-slate-50/80 transition">
+<td class="p-3">
+<span class="font-bold text-slate-900 block">PE201 • Physical Fitness &amp; Movement II</span>
+<span class="text-[10px] text-slate-400">Human Kinetics Department</span>
+</td>
+<td class="p-3 text-center font-bold text-[#ea580c]">2.0</td>
+<td class="p-3 text-slate-600">Sat 10:30 - 12:30 PM</td>
+<td class="p-3"><span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 text-[11px]">Gymnasium</span></td>
+<td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold text-[10px] uppercase">Blocked</span></td>
+<td class="p-3 text-right"><button class="text-slate-400 hover:text-slate-700 p-1" title="Inspect"><span class="material-symbols-outlined text-[16px]">more_vert</span></button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs">
+<button class="px-3.5 py-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold flex items-center gap-1.5 transition" type="button">
+<span class="material-symbols-outlined text-[17px]">add_circle</span>
+<span>Add Elective / Irregular Subject</span>
+</button>
+<span class="text-slate-400">7 subjects loaded from cohort block <strong class="text-slate-800">BSIT-2A</strong></span>
+</div>
+</section>
+</div>
+<!-- RIGHT SIDEBAR COLUMN: Widgets & Summary (4 Cols) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Card 1: Student Profile & Section Dossier Card -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<div class="relative mb-3">
+<img alt="Juan Miguel S. Dela Cruz" class="w-24 h-24 rounded-full object-cover border-4 border-orange-100 shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWkB3Ce_A5MQ349qlMbI8jI3KHbBOsJ2ZNRJ68JQtlb197epjLCcb2Rq1f8uoPQw1oE1cJ1-J8bzA5-MxyaHcSjzV_wjrFtBWz_drRHHy3_enHXaFMU_CsrRCTWCS2SVtMSX1IyVP78lsPrprJN-BhRPWR2uey8j6_p42PP9m9_lcYXXp1yErUq3kTelmL7AY1PkDpPJM2sUqZno0ideJSqOFp-o8L6UgjiUCJfQ2_BlVQkKv4OKjVGbWf2l9TgDOnaA"/>
+<div class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#ea580c] text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+</div>
+</div>
+<h3 class="text-base font-bold text-slate-900">Juan Miguel S. Dela Cruz</h3>
+<span class="text-xs text-slate-500 mb-3">LRN: 139402910492 • ID: <strong class="text-[#ea580c]">2024-10492</strong></span>
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2.5 py-1 rounded-full bg-orange-50 border border-orange-200 text-[#ea580c] font-bold text-[11px]">
+                BS Information Technology
+              </span>
+<span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-bold text-[11px]">
+                2nd Year Regular
+              </span>
+</div>
+<!-- Quick specs -->
+<div class="w-full grid grid-cols-2 gap-2 bg-slate-50 border border-slate-100 p-3 rounded-lg text-left text-xs mb-3">
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Academic Status</span>
+<span class="font-bold text-emerald-600">Regular / Cleared</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Cumulative GWA</span>
+<span class="font-bold text-slate-700">1.35 (Dean's List)</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Credited Units</span>
+<span class="font-bold text-slate-700">18.0 Units</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Current Term Load</span>
+<span class="font-bold text-[#ea580c]">21.0 Units</span>
+</div>
+</div>
+<div class="w-full p-2.5 rounded-lg bg-emerald-100/70 border border-emerald-100 text-emerald-700 text-xs font-semibold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Evaluation Cleared • Ready for Blocking</span>
+</div>
+</div>
+<!-- Card 2: Section Capacity & Room Utilization Card -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ea580c] text-[20px]">meeting_room</span>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Section &amp; Facility Allocations</h3>
+</div>
+<span class="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                Confirmed
+              </span>
+</div>
+<div class="space-y-2.5 text-xs">
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-bold text-slate-800 block">Assigned Cohort</span>
+<span class="text-[11px] text-slate-500">BSIT-2A (Morning Session)</span>
+</div>
+<span class="text-xs font-mono font-bold text-[#ea580c]">SEC-201</span>
+</div>
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-bold text-slate-800 block">Computer Labs Reserved</span>
+<span class="text-[11px] text-slate-500">Lab 301, Lab 302 (Computing Bldg)</span>
+</div>
+<span class="text-xs font-mono font-bold text-emerald-600">Reserved</span>
+</div>
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-bold text-slate-800 block">Lecture Theaters</span>
+<span class="text-[11px] text-slate-500">Rm 204, Rm 405 (Academic Wing)</span>
+</div>
+<span class="text-xs font-mono font-bold text-slate-600">Allocated</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Assessment Preview Summary Card -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ea580c] text-[20px]">receipt_long</span>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Assessment Preview</h3>
+</div>
+<span class="text-[11px] font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
+                Preliminary
+              </span>
+</div>
+<div class="space-y-2 text-xs">
+<div class="flex justify-between py-1 border-b border-slate-100">
+<span class="text-slate-600">Tuition Fee (21.0 Units @ ₱850)</span>
+<span class="font-mono font-bold text-slate-800">₱17,850.00</span>
+</div>
+<div class="flex justify-between py-1 border-b border-slate-100">
+<span class="text-slate-600">Laboratory Fees (3 Subjects)</span>
+<span class="font-mono font-bold text-slate-800">₱4,800.00</span>
+</div>
+<div class="flex justify-between py-1 border-b border-slate-100">
+<span class="text-slate-600">Miscellaneous &amp; Auxiliary</span>
+<span class="font-mono font-bold text-slate-800">₱2,450.00</span>
+</div>
+<div class="flex justify-between items-center pt-2 text-sm font-bold text-slate-900">
+<span>Total Estimated Assessment</span>
+<span class="font-mono text-[#ea580c] text-base">₱25,100.00</span>
+</div>
+</div>
+<p class="text-[11px] text-slate-400 mt-3 italic">* Final billing assessment validated upon cashier endorsement.</p>
+</div>
+<!-- Card 4: Relational Schema Foreign Keys Card -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-100">
+<div class="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+<span class="material-symbols-outlined text-[16px] text-slate-400">account_tree</span>
+<span>Relational Schema Foreign Keys</span>
+</div>
+<span class="text-[10px] font-mono text-slate-400">LIVE_DB_MAP</span>
+</div>
+<div class="grid grid-cols-2 gap-2 font-mono text-xs">
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">StudentID:</span>
+<span class="text-[#ea580c] font-bold">10492</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">SectionID:</span>
+<span class="text-[#ea580c] font-bold">201 (2A)</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">EnrollmentID:</span>
+<span class="text-slate-800 font-bold">4409</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">BlockingID:</span>
+<span class="text-slate-800 font-bold">881</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">StaffID:</span>
+<span class="text-slate-800 font-bold">14</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">CohortStatus:</span>
+<span class="text-emerald-600 font-bold">ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+<!-- 6. FOOTER SYSTEM BAR (Sticky/bottom) -->
+<footer class="h-10 bg-white border-t border-slate-200 px-8 flex items-center justify-between text-xs text-slate-500 shrink-0">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-medium text-slate-700">All Systems Operational</span>
+</div>
+<span class="text-slate-300">•</span>
+<span>DB Connected (22 Tables)</span>
+<span class="text-slate-300">•</span>
+<span>Active Session ID: VR-REG-2024-8849</span>
+</div>
+<div class="flex items-center gap-1.5 font-medium text-slate-500">
+<span class="material-symbols-outlined text-[15px] text-slate-400">lock</span>
+<span>256-Bit SSL Encrypted Campus Node</span>
+</div>
+</footer>
+</div>
+</body></html>

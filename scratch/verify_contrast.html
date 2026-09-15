@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Mode Contrast Verification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script src="../assets/tailwindcss.js"></script>
+    <style>
+        /* Embed exact styles from header.php */
+        html.dark body {
+            background-color: #0b0f19 !important;
+            color: #f8fafc !important;
+        }
+        html.dark .bg-surface-container-lowest,
+        html.dark .bg-white {
+            background-color: #111827 !important;
+        }
+        html.dark .bg-surface-container-low,
+        html.dark .bg-slate-50,
+        html.dark .bg-slate-100 {
+            background-color: #172033 !important;
+        }
+        html.dark .bg-surface-container,
+        html.dark .bg-surface-variant {
+            background-color: #1e293b !important;
+        }
+        html.dark .bg-surface-container-high {
+            background-color: #222f46 !important;
+        }
+        html.dark .bg-surface-container-highest {
+            background-color: #2d3d59 !important;
+        }
+        html.dark .text-on-surface,
+        html.dark .text-slate-900,
+        html.dark .text-slate-800,
+        html.dark .text-gray-900,
+        html.dark .text-gray-800 {
+            color: #f8fafc !important;
+        }
+        html.dark .text-on-surface-variant,
+        html.dark .text-slate-700,
+        html.dark .text-slate-600,
+        html.dark .text-gray-700,
+        html.dark .text-gray-600,
+        html.dark label {
+            color: #e2e8f0 !important;
+        }
+        html.dark .text-tertiary,
+        html.dark .text-slate-500,
+        html.dark .text-slate-400,
+        html.dark .text-gray-500,
+        html.dark th {
+            color: #cbd5e1 !important;
+        }
+        html.dark .bg-emerald-50,
+        html.dark .bg-emerald-100,
+        html.dark .bg-green-50,
+        html.dark .bg-green-50\/50,
+        html.dark .bg-green-100 {
+            background-color: rgba(16, 185, 129, 0.2) !important;
+            border-color: rgba(16, 185, 129, 0.4) !important;
+        }
+        html.dark .text-emerald-500,
+        html.dark .text-emerald-600,
+        html.dark .text-emerald-700,
+        html.dark .text-emerald-800,
+        html.dark .text-emerald-900,
+        html.dark .text-green-500,
+        html.dark .text-green-600,
+        html.dark .text-green-700,
+        html.dark .text-green-800,
+        html.dark .text-green-900 {
+            color: #6ee7b7 !important;
+        }
+        html.dark .bg-amber-50,
+        html.dark .bg-amber-100 {
+            background-color: rgba(245, 158, 11, 0.2) !important;
+            border-color: rgba(245, 158, 11, 0.4) !important;
+        }
+        html.dark .text-amber-500,
+        html.dark .text-amber-600,
+        html.dark .text-amber-700,
+        html.dark .text-amber-800,
+        html.dark .text-amber-900 {
+            color: #fcd34d !important;
+        }
+        html.dark .bg-blue-50,
+        html.dark .bg-blue-100,
+        html.dark .bg-sky-50 {
+            background-color: rgba(59, 130, 246, 0.2) !important;
+            border-color: rgba(59, 130, 246, 0.4) !important;
+        }
+        html.dark .text-blue-700,
+        html.dark .text-blue-800,
+        html.dark .text-blue-900,
+        html.dark .text-sky-700 {
+            color: #93c5fd !important;
+        }
+        html.dark .bg-red-50,
+        html.dark .bg-red-100,
+        html.dark .bg-error-container,
+        html.dark .bg-error-container\/50 {
+            background-color: rgba(239, 68, 68, 0.2) !important;
+            border-color: rgba(239, 68, 68, 0.4) !important;
+        }
+        html.dark .text-red-700,
+        html.dark .text-red-800,
+        html.dark .text-red-900,
+        html.dark .text-error,
+        html.dark .text-on-error-container {
+            color: #fca5a5 !important;
+        }
+        html.dark .bg-purple-50,
+        html.dark .bg-purple-100 {
+            background-color: rgba(168, 85, 247, 0.2) !important;
+            border-color: rgba(168, 85, 247, 0.4) !important;
+        }
+        html.dark .text-purple-700,
+        html.dark .text-purple-800 {
+            color: #d8b4fe !important;
+        }
+        html.dark .bg-teal-50,
+        html.dark .bg-teal-100 {
+            background-color: rgba(20, 184, 166, 0.2) !important;
+            border-color: rgba(20, 184, 166, 0.4) !important;
+        }
+        html.dark .text-teal-700,
+        html.dark .text-teal-800 {
+            color: #5eead4 !important;
+        }
+        html.dark .bg-orange-50,
+        html.dark .bg-orange-100,
+        html.dark .bg-primary-container,
+        html.dark .bg-secondary-container {
+            background-color: rgba(249, 115, 22, 0.18) !important;
+            border-color: rgba(249, 115, 22, 0.35) !important;
+        }
+        html.dark .text-orange-600,
+        html.dark .text-orange-700,
+        html.dark .text-orange-800,
+        html.dark .text-orange-950,
+        html.dark .text-secondary {
+            color: #fdba74 !important;
+        }
+        html.dark .bg-gray-100,
+        html.dark .bg-slate-200 {
+            background-color: rgba(148, 163, 184, 0.15) !important;
+            border-color: rgba(148, 163, 184, 0.3) !important;
+        }
+    </style>
+</head>
+<body class="p-8 font-sans">
+    <div class="max-w-4xl mx-auto space-y-6">
+        <h1 class="text-2xl font-bold text-slate-900">Dark Mode Contrast Audit Matrix</h1>
+        <p class="text-slate-500">Comparing badges, alert boxes, metadata headers, and form inputs in dark mode.</p>
+
+        <!-- Status Badges Grid -->
+        <div class="p-6 bg-surface-container-lowest rounded-2xl border border-slate-800 space-y-4">
+            <h2 class="text-lg font-bold text-slate-900">Status Badges & Pills</h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Approved for Enrollment</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Officially Enrolled</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">Pending Evaluation</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">Credited (Transferee)</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">Admission Rejected</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">Special Section</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-teal-100 text-teal-800">Medical Cleared</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">General Requirement</span>
+            </div>
+        </div>
+
+        <!-- Alert Banners -->
+        <div class="space-y-3">
+            <div class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl text-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-emerald-600">check_circle</span>
+                <span>Payment recorded successfully. Receipt registered in general ledger.</span>
+            </div>
+            <div class="p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-600">hourglass_empty</span>
+                <span>Evaluation is pending approval by Registrar Officer.</span>
+            </div>
+            <div class="p-4 bg-error-container border border-error/30 text-on-error-container rounded-xl text-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-red-600">error</span>
+                <span>Incomplete prerequisites: High School Card (Form 138) missing.</span>
+            </div>
+        </div>
+
+        <!-- Table Headers and Data -->
+        <div class="bg-surface-container-lowest rounded-2xl border border-slate-800 overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-surface-container-low border-b border-slate-800">
+                    <tr>
+                        <th class="px-4 py-3 text-xs uppercase tracking-wider text-tertiary">Subject Code</th>
+                        <th class="px-4 py-3 text-xs uppercase tracking-wider text-tertiary">Description</th>
+                        <th class="px-4 py-3 text-xs uppercase tracking-wider text-tertiary">Units</th>
+                        <th class="px-4 py-3 text-xs uppercase tracking-wider text-tertiary">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800 text-sm">
+                    <tr>
+                        <td class="px-4 py-3 text-slate-800 font-mono font-bold">IT-101</td>
+                        <td class="px-4 py-3 text-slate-700">Introduction to Information Technology</td>
+                        <td class="px-4 py-3 text-slate-500">3.0</td>
+                        <td class="px-4 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-800 font-semibold">Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-3 text-slate-800 font-mono font-bold">IT-102</td>
+                        <td class="px-4 py-3 text-slate-700">Computer Programming 1</td>
+                        <td class="px-4 py-3 text-slate-500">3.0</td>
+                        <td class="px-4 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-amber-100 text-amber-800 font-semibold">Enrolled</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEAIT EduTech - Student Admission &amp; Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#ea580c',
+              hover: '#c2410c',
+              light: '#fff7ed',
+              dark: '#9a3412',
+            },
+            surface: '#f8f9fc',
+          },
+          fontFamily: {
+            sans: ['Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f8f9fc;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 bg-[#f8f9fc] flex flex-col antialiased">
+<!-- TOP BAR -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-white border-b border-slate-200 z-40 flex items-center justify-between px-6 pl-[280px]">
+<!-- Left Search & Term Badge -->
+<div class="flex items-center gap-4 flex-1 max-w-2xl">
+<div class="flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 cursor-pointer hover:bg-orange-100 transition">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>A.Y. 2024–2025 • 1st Semester</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full h-9 pl-10 pr-4 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent focus:bg-white transition" placeholder="Search Student No, Student Name, Applicant ID..." type="search"/>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4 shrink-0">
+<button class="flex items-center gap-1.5 bg-[#ea580c] hover:bg-[#c2410c] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Enrollment</span>
+</button>
+<button class="relative p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-600 ring-2 ring-white"></span>
+</button>
+<div class="h-8 w-px bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<img alt="Maria Santos" class="w-9 h-9 rounded-full object-cover border border-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNOULzZW53CYmFOT742OArq-VH9D07gwKqs1Ulc5o9gm_UyyGrYfDqg3QpyZbcxsb1zCC2dSF18nSHyt6GD06vpTERsEAnSVw8zgTy_Bu2JZP_9VBD6FDJaCG8VxX7WeoePBsEP__0JIChNomVBBf-jmF-ZMOwwRTVmoJntQs8y8pPbm0Rh_15Zs7xlg-v3cjy-SgXqnLsgs3PHtYxlPsv_HuIfXLgBLG6U3aKJ_Vtoriuj__r12wh"/>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 leading-tight">Maria Santos</span>
+<span class="text-xs text-slate-500 font-medium">Registrar Staff</span>
+</div>
+</div>
+</div>
+</header>
+<!-- SIDEBAR NAVIGATION -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-white border-r border-slate-200 z-50 flex flex-col justify-between overflow-y-auto">
+<div>
+<!-- Brand Seal & Logo Header -->
+<div class="h-16 px-5 flex items-center gap-3 border-b border-slate-100">
+<img alt="SEAIT Official Seal" class="w-10 h-10 rounded-full object-cover shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC64DJSgPzEXhbgOsv-wUn-WThlYDHHxI_r71dCKV4HBJYqm-zAoE__8F0uJdksIWfh4WdWl4AfMz996RY-6AkqJnzDni2guQ7fyd6xslXG_zvA5brlXM5GVUZktR3HD7bOPRh5ZYFRIUwB66d7Ed-J0lpKSG_-KCy1Ca5PBWv7UohHtAobpDgLX55ct44aCe61gWTvg86OP-krw5s3P62XT5suhJiD0vviJiBuJGBPode3OAWOliGkZQi50rHPSCeRnw"/>
+<div class="flex flex-col min-w-0">
+<span class="text-[15px] font-bold tracking-tight text-slate-900 leading-none">
+            SEAIT <span class="text-[#ea580c]">EDUTECH</span>
+</span>
+<span class="text-[10px] tracking-wider text-slate-400 uppercase font-bold mt-1 leading-none">
+            ENROLMENT PLATFORM
+          </span>
+</div>
+</div>
+<!-- Navigation Category -->
+<div class="px-5 pt-5 pb-2">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Academic Navigation</span>
+</div>
+<!-- Nav Items -->
+<nav class="px-3 flex flex-col gap-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span>Dashboard / Overview</span>
+</a>
+<!-- 2. Admission & Registration (ACTIVE) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-[#ea580c] text-white text-sm font-semibold shadow-sm transition" href="#">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+<span>Admission &amp; Registration</span>
+</a>
+<!-- 3. Academic Evaluation -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Academic Evaluation</span>
+</a>
+<!-- 4. Sectioning & Blocking -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_view_week</span>
+<span>Sectioning &amp; Blocking</span>
+</a>
+<!-- 5. Enrollment & Payment -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Enrollment &amp; Payment</span>
+</a>
+<!-- 6. Student Directory -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 text-sm font-medium transition" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span>Student Directory</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Terminal Status Badge Card -->
+<div class="p-3 m-3 bg-slate-50 border border-slate-200 rounded-xl">
+<div class="flex items-center gap-2 text-emerald-700 font-semibold text-xs mb-1">
+<span class="material-symbols-outlined text-[17px] text-emerald-600">verified_user</span>
+<span>Authorized Terminal</span>
+</div>
+<p class="text-[11px] text-slate-500 leading-normal">Office of the University Registrar • Official Record Access Tier 1</p>
+</div>
+</aside>
+<!-- MAIN BODY CONTAINER -->
+<div class="pl-[260px] pt-16 flex-1 flex flex-col">
+<main class="p-8 max-w-[1600px] w-full mx-auto space-y-6 flex-1">
+<!-- 3. PAGE HEADER & BREADCRUMB / STATUS BANNER -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-5">
+<div class="space-y-2">
+<div class="flex items-center gap-2.5 flex-wrap text-xs">
+<span class="px-2.5 py-1 rounded bg-orange-100 text-orange-800 font-bold tracking-wider uppercase">
+              ADMISSION &amp; REGISTRATION PIPELINE
+            </span>
+<span class="text-slate-400">•</span>
+<span class="text-slate-600 font-medium">Ref: <strong class="text-slate-900 font-bold">ADM-2024-0891</strong></span>
+<span class="text-slate-400">•</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 font-bold">
+<span class="w-2 h-2 rounded-full bg-[#ea580c] animate-pulse"></span>
+              Pending Evaluation
+            </span>
+</div>
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900">
+              Student Admission &amp; Profile Registration
+            </h1>
+<p class="text-sm text-slate-500 mt-0.5">
+              Authorized Registrar Terminal • Reviewing Candidate File: <span class="font-bold text-slate-800">Dela Cruz, Juan Miguel S.</span> (ID: <span class="font-bold text-[#ea580c]">2024-10492</span>)
+            </p>
+</div>
+</div>
+<!-- Fast Header Action Buttons -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<button class="px-4 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs flex items-center gap-1.5 transition shadow-sm" type="button">
+<span class="material-symbols-outlined text-[17px]">save</span>
+<span>Save Draft</span>
+</button>
+<button class="px-4 py-2 rounded-lg border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 font-semibold text-xs flex items-center gap-1.5 transition" type="button">
+<span class="material-symbols-outlined text-[17px]">block</span>
+<span>Reject with Remarks</span>
+</button>
+<button class="px-5 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs flex items-center gap-2 transition shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Approve Admission</span>
+</button>
+</div>
+</div>
+<!-- 4. STEPPED WORKFLOW PROGRESS BAR -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Step 1 (Active) -->
+<div class="flex items-center gap-3 p-3 rounded-lg bg-orange-50/70 border border-orange-200">
+<div class="w-8 h-8 rounded-full bg-[#ea580c] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+              01
+            </div>
+<div class="min-w-0">
+<span class="text-[10px] uppercase font-bold text-orange-600 block leading-tight">Step 01 • Active</span>
+<span class="text-xs font-bold text-slate-900 truncate block">Personal Information</span>
+</div>
+<span class="material-symbols-outlined text-[#ea580c] text-[18px] ml-auto">edit_document</span>
+</div>
+<!-- Step 2 -->
+<div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shrink-0">
+              02
+            </div>
+<div class="min-w-0">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block leading-tight">Step 02</span>
+<span class="text-xs font-semibold text-slate-700 truncate block">Academic History &amp; School</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px] ml-auto">school</span>
+</div>
+<!-- Step 3 -->
+<div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shrink-0">
+              03
+            </div>
+<div class="min-w-0">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block leading-tight">Step 03</span>
+<span class="text-xs font-semibold text-slate-700 truncate block">Credentials &amp; Documents</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px] ml-auto">task</span>
+</div>
+<!-- Step 4 -->
+<div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shrink-0">
+              04
+            </div>
+<div class="min-w-0">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block leading-tight">Step 04</span>
+<span class="text-xs font-semibold text-slate-700 truncate block">Review &amp; Endorsement</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px] ml-auto">check_circle</span>
+</div>
+</div>
+</div>
+<!-- 5. MAIN CONTENT AREA (2-COLUMN GRID) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: Form Sections (8 Cols) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Section 1: Personal Identification & Enrollment Intent -->
+<section class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-5 border-b border-slate-100 gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-orange-100 text-[#ea580c] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-slate-900">1. Personal Identification &amp; Enrollment Intent</h2>
+<p class="text-xs text-slate-400">Schema mapping: tables <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">student</code>, <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">student_type</code>, <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">program</code></p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg self-start sm:self-auto">
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Assigned StudentNo:</span>
+<span class="text-xs font-bold font-mono text-[#ea580c]">2024-10492</span>
+</div>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-3 gap-4" onsubmit="event.preventDefault();">
+<!-- Last Name -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Last Name (Apelyido) <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Dela Cruz"/>
+</div>
+<!-- First Name -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">First Name (Pangalan) <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Juan Miguel"/>
+</div>
+<!-- Middle Name -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Middle Name (Gitnang Pangalan)</label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Santos"/>
+</div>
+<!-- Birth Date -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Birth Date (Araw ng Kapanganakan) <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="date" value="2005-08-14"/>
+</div>
+<!-- Legal Sex Toggle -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Legal Sex <span class="text-[#ea580c]">*</span></label>
+<div class="grid grid-cols-2 gap-2 h-10">
+<button class="flex items-center justify-center gap-1.5 rounded-lg bg-[#ea580c] text-white font-bold text-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">male</span>
+<span>Male</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold text-xs transition" type="button">
+<span class="material-symbols-outlined text-[16px]">female</span>
+<span>Female</span>
+</button>
+</div>
+</div>
+<!-- Contact Mobile -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Contact Mobile Number <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="tel" value="+63 917 849 2011"/>
+</div>
+<!-- Institutional / Candidate Email -->
+<div class="md:col-span-2">
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Institutional / Candidate Email Address <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="email" value="juan.delacruz.2024@seait.edu.ph"/>
+</div>
+<!-- Classification -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Applicant Classification <span class="text-[#ea580c]">*</span></label>
+<select class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition">
+<option selected="">Freshman (Direct SHS Graduate)</option>
+<option>Transferee (College/University)</option>
+<option>Second Degree / Continuing</option>
+<option>International Applicant</option>
+</select>
+</div>
+<!-- Address Full Width -->
+<div class="md:col-span-3">
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Residential &amp; Permanent Mailing Address <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Block 14 Lot 8, Mahogany Ave, San Lorenzo Subd, City of General Santos"/>
+</div>
+<!-- Program -->
+<div class="md:col-span-2">
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Intended Academic Degree Program <span class="text-[#ea580c]">*</span></label>
+<select class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition">
+<option selected="">BS Information Technology (Dept. of Computing Studies)</option>
+<option>BS Computer Science (Dept. of Computing Studies)</option>
+<option>BS Nursing (Dept. of Allied Medical Sciences)</option>
+<option>BS Civil Engineering (Dept. of Engineering &amp; Architecture)</option>
+<option>BS Accountancy (Dept. of Business &amp; Accountancy)</option>
+</select>
+</div>
+<!-- Admission Track Option -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Admission Track / Session</label>
+<div class="h-10 px-3.5 bg-slate-100 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 flex items-center">
+<span class="font-bold text-[#ea580c] mr-1.5">Regular Full-Time</span> (Day Shift / Main Campus)
+                </div>
+</div>
+</form>
+</section>
+<!-- Section 2: Previous Academic Record & Guardian Profile -->
+<section class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-5 border-b border-slate-100 gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-orange-100 text-[#ea580c] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-slate-900">2. Previous Academic Record &amp; Guardian Profile</h2>
+<p class="text-xs text-slate-400">Schema mapping: table <code class="text-orange-600 bg-orange-50 px-1 py-0.5 rounded font-mono">student_profile</code> (FK: StudentID = 10492)</p>
+</div>
+</div>
+<span class="text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md self-start sm:self-auto">ProfileID: #PRF-9821</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Legal Guardian Name -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Legal Guardian / Emergency Contact <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Elena Santos Dela Cruz"/>
+<span class="text-[11px] text-slate-400 mt-1 block">Relationship: Mother (Legal Beneficiary)</span>
+</div>
+<!-- Guardian Contact Phone -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Guardian Contact Number <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="tel" value="+63 920 445 8192"/>
+<span class="text-[11px] text-slate-400 mt-1 block">Primary SMS Alert Destination</span>
+</div>
+<!-- Previous School -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Previous Educational Institution <span class="text-[#ea580c]">*</span></label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Mindanao Regional Science High School"/>
+</div>
+<!-- Previous Strand -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Prior Track / Secondary Strand</label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="Technical-Vocational ICT / STEM Strand"/>
+</div>
+<!-- Last Year Level -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Last Year Level Completed</label>
+<select class="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition">
+<option selected="">Grade 12 (Senior High School)</option>
+<option>1st Year College (Transferee)</option>
+<option>2nd Year College (Transferee)</option>
+<option>College Graduate (Second Degree)</option>
+</select>
+</div>
+<!-- Metrics: GWA & Year -->
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">GWA / General Average <span class="text-[#ea580c]">*</span></label>
+<div class="h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between">
+<span class="font-bold text-[#ea580c] text-sm">1.35</span>
+<span class="text-[11px] font-bold uppercase bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">Honors Tier</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1">Year Graduated</label>
+<input class="w-full h-10 px-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 text-center font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition" type="text" value="2024"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Registrar Review & Endorsement Decision -->
+<section class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-orange-100 text-[#ea580c] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-slate-900">3. Registrar Review &amp; Endorsement Decision</h2>
+<p class="text-xs text-slate-400">Official Registrar Sign-off &amp; Audit Trail</p>
+</div>
+</div>
+<span class="text-xs font-bold text-slate-700 bg-orange-50 border border-orange-200 px-3 py-1 rounded-full self-start sm:self-auto">
+                Maria Santos (Registrar Officer II - Staff ID: #14)
+              </span>
+</div>
+<!-- Timestamps row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Submission Date</span>
+<span class="text-sm font-bold text-slate-800">Aug 02, 2024 • 09:42 AM</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Evaluation Target</span>
+<span class="text-sm font-bold text-[#ea580c]">Aug 03, 2024 • 05:00 PM (Within 24hr SLA)</span>
+</div>
+</div>
+<!-- Remarks Textarea -->
+<div class="mb-5">
+<label class="block text-xs font-bold text-slate-700 mb-1.5">Official Registrar Endorsement Remarks</label>
+<textarea class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c] focus:border-transparent transition leading-relaxed resize-none" rows="3">Candidate meets university admission criteria with GWA 1.35. Senior high credentials validated against DepEd LRN database. Ready for subject sectioning and assessment crediting under BSIT Curriculum Rev 2024.</textarea>
+</div>
+<!-- Action Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between pt-4 border-t border-slate-100 gap-3">
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<button class="px-3.5 py-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs flex items-center gap-1.5 transition" type="button">
+<span class="material-symbols-outlined text-[17px]">history</span>
+<span>Request Resubmission</span>
+</button>
+<button class="px-3.5 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition" type="button">
+                  Print Form 1A Summary
+                </button>
+</div>
+<button class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition" type="button">
+<span>Execute Endorsement &amp; Advance to Evaluation</span>
+<span class="material-symbols-outlined text-[17px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+<!-- RIGHT SIDEBAR COLUMN: Widgets & Matrix (4 Cols) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Card A: Applicant Dossier & Seal Card -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<div class="relative mb-3">
+<img alt="Juan Miguel S. Dela Cruz" class="w-24 h-24 rounded-full object-cover border-4 border-orange-100 shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWkB3Ce_A5MQ349qlMbI8jI3KHbBOsJ2ZNRJ68JQtlb197epjLCcb2Rq1f8uoPQw1oE1cJ1-J8bzA5-MxyaHcSjzV_wjrFtBWz_drRHHy3_enHXaFMU_CsrRCTWCS2SVtMSX1IyVP78lsPrprJN-BhRPWR2uey8j6_p42PP9m9_lcYXXp1yErUq3kTelmL7AY1PkDpPJM2sUqZno0ideJSqOFp-o8L6UgjiUCJfQ2_BlVQkKv4OKjVGbWf2l9TgDOnaA"/>
+<div class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#ea580c] text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+<h3 class="text-base font-bold text-slate-900">Juan Miguel S. Dela Cruz</h3>
+<span class="text-xs text-slate-500 mb-3">LRN: 139402910492 • General Santos City</span>
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2.5 py-1 rounded-full bg-orange-50 border border-orange-200 text-[#ea580c] font-bold text-[11px]">
+                BS Information Technology
+              </span>
+<span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-bold text-[11px]">
+                1st Year Freshman
+              </span>
+</div>
+<!-- Quick specs -->
+<div class="w-full grid grid-cols-2 gap-2 bg-slate-50 border border-slate-100 p-3 rounded-lg text-left text-xs">
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Civil Status</span>
+<span class="font-bold text-slate-700">Single</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Citizenship</span>
+<span class="font-bold text-slate-700">Filipino</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Birth Place</span>
+<span class="font-bold text-slate-700">Gen. Santos</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[10px] uppercase font-bold">Entry Cohort</span>
+<span class="font-bold text-[#ea580c]">Fall 2024</span>
+</div>
+</div>
+</div>
+<!-- Card B: Document Credentials Checklist -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ea580c] text-[20px]">folder_special</span>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Document Credentials</h3>
+</div>
+<span class="text-[11px] font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
+                3 / 4 Verified
+              </span>
+</div>
+<div class="space-y-2.5">
+<!-- Item 1 -->
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">verified</span>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">PSA Birth Certificate</span>
+<span class="text-[10px] text-slate-400">Original Digital Copy • 2.4 MB</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">Verified</span>
+</div>
+<!-- Item 2 -->
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">verified</span>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">Form 137 / 138 SHS Card</span>
+<span class="text-[10px] text-slate-400">Certified True Copy • MRSHS</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">Verified</span>
+</div>
+<!-- Item 3 -->
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-amber-500 text-[18px]">pending</span>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">Good Moral Certificate</span>
+<span class="text-[10px] text-slate-400">Issued July 2024 • Awaiting stamp</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-700">In Review</span>
+</div>
+<!-- Item 4 -->
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">verified</span>
+<div>
+<span class="text-xs font-bold text-slate-800 block leading-tight">2x2 Institutional ID Photo</span>
+<span class="text-[10px] text-slate-400">White Background Spec met</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">Verified</span>
+</div>
+</div>
+<button class="mt-3 w-full py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Open Full Credential Viewer</span>
+</button>
+</div>
+<!-- Card C: Admissions Queue Widget -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#ea580c] text-[20px]">view_timeline</span>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Admissions Queue</h3>
+</div>
+<span class="text-[11px] text-slate-500 font-medium">14 Pending Applicants</span>
+</div>
+<div class="space-y-2">
+<!-- Item 1 (Active) -->
+<div class="p-2.5 rounded-lg bg-orange-50/70 border border-orange-200 flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-[#ea580c] text-white font-bold text-xs flex items-center justify-center shrink-0">
+                    JD
+                  </div>
+<div class="min-w-0">
+<span class="text-xs font-bold text-slate-900 block truncate">Juan Miguel Dela Cruz</span>
+<span class="text-[10px] text-slate-500 block">BSIT • Ref #0891</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-[#ea580c] text-white">Active</span>
+</div>
+<!-- Item 2 -->
+<div class="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between cursor-pointer transition">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center shrink-0">
+                    AV
+                  </div>
+<div class="min-w-0">
+<span class="text-xs font-bold text-slate-800 block truncate">Alyssa Mae Villanueva</span>
+<span class="text-[10px] text-slate-500 block">BSCS • Ref #0892</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">Cleared</span>
+</div>
+<!-- Item 3 -->
+<div class="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-100 flex items-center justify-between cursor-pointer transition">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center shrink-0">
+                    MA
+                  </div>
+<div class="min-w-0">
+<span class="text-xs font-bold text-slate-800 block truncate">Marc Gabriel Alvarez</span>
+<span class="text-[10px] text-slate-500 block">BSIT • Transferee</span>
+</div>
+</div>
+<span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-200 text-slate-700">Waitlist</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 mt-2 border-t border-slate-100 text-xs">
+<span class="text-slate-400 text-[11px]">Showing 3 of 14 queue entries</span>
+<a class="font-bold text-[#ea580c] hover:underline text-[11px]" href="#">View Entire Queue →</a>
+</div>
+</div>
+<!-- Card D: Relational Schema Foreign Keys -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-100">
+<div class="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+<span class="material-symbols-outlined text-[16px] text-slate-400">account_tree</span>
+<span>Relational Schema Foreign Keys</span>
+</div>
+<span class="text-[10px] font-mono text-slate-400">LIVE_DB_MAP</span>
+</div>
+<div class="grid grid-cols-2 gap-2 font-mono text-xs">
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">StudentID:</span>
+<span class="text-[#ea580c] font-bold">10492</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">StaffID:</span>
+<span class="text-slate-800 font-bold">14</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">ProgramID:</span>
+<span class="text-slate-800 font-bold">01 (BSIT)</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">StudentTypeID:</span>
+<span class="text-slate-800 font-bold">01 (Freshman)</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">AdmissionID:</span>
+<span class="text-[#ea580c] font-bold">891</span>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-2 rounded flex justify-between items-center">
+<span class="text-slate-400 text-[11px]">RegisterID:</span>
+<span class="text-slate-800 font-bold">4409</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 6. FOOTER SYSTEM BAR (Sticky/bottom) -->
+<footer class="h-10 bg-white border-t border-slate-200 px-8 flex items-center justify-between text-xs text-slate-500 shrink-0">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-medium text-slate-700">All Systems Operational</span>
+</div>
+<span class="text-slate-300">•</span>
+<span>DB Connected (22 Tables)</span>
+<span class="text-slate-300">•</span>
+<span>Active Session ID: VR-REG-2024-8849</span>
+</div>
+<div class="flex items-center gap-1.5 font-medium text-slate-500">
+<span class="material-symbols-outlined text-[15px] text-slate-400">lock</span>
+<span>256-Bit SSL Encrypted Campus Node</span>
+</div>
+</footer>
+</div>
+</body></html>

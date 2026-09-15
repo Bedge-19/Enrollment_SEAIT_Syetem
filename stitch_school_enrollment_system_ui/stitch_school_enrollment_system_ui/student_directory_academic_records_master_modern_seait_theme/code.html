@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Directory &amp; Academic Records Master - SEAIT Enrolment Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    * {
+      font-family: Arial, Helvetica, sans-serif !important;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+<div class="flex min-h-[calc(100vh-40px)]">
+<!-- SIDEBAR -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0">
+<div>
+<!-- Logo & Branding -->
+<div class="p-5 border-b border-slate-100 flex items-center gap-3">
+<img alt="SEAIT Official Seal" class="w-11 h-11 object-contain rounded-full border border-slate-100 shadow-sm shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXeoemUnwXfO9gncc4uhOOJ1eErWfKh7p4pvezNm_cEWRk-PB9NXZWAEvehcKpaXWB4XoJRJTWVcX7frQq6n12QHmG0W3Jogm8UfPtlYvTgpM4FdkGzySc-S5faFk9phM3C5LwI6-jAngd1OkOJihDZy9JayG_NCd_lnzpP5unwe57J_jwPaO8jWgR104qLi-rZJo51NslLRNk1PGJfMkxTqNRqEQwpAnwmp4yJ8znKa_dbKqyaI9t-BM03_3A09g4jQ"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-base tracking-tight text-slate-900">SEAIT</span>
+<span class="text-xs font-bold px-1.5 py-0.5 rounded bg-orange-100 text-orange-700 uppercase tracking-wider">EduTech</span>
+</div>
+<div class="text-[11px] text-slate-500 font-medium tracking-tight">ENROLMENT PLATFORM</div>
+</div>
+</div>
+<!-- Academic Navigation -->
+<div class="p-4">
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">Academic Navigation</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+</svg>
+<span>Dashboard / Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Admission &amp; Registration</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Academic Evaluation</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Sectioning &amp; Blocking</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<rect height="14" rx="2" width="20" x="2" y="5"></rect>
+<path d="M2 10h20" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Enrollment &amp; Payment</span>
+</a>
+<!-- ACTIVE ITEM -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-[#ea580c] text-white shadow-sm shadow-orange-500/20" href="#">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Student Directory</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Authorized Terminal Tag -->
+<div class="p-4 m-3 rounded-xl bg-orange-50/60 border border-orange-100/80">
+<div class="flex items-start gap-2.5">
+<svg class="w-5 h-5 text-[#ea580c] shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<div>
+<div class="text-xs font-bold text-slate-900">Authorized Terminal</div>
+<div class="text-[11px] text-slate-500 mt-0.5 leading-tight">Office of the University Registrar • Official Record Access Tier 1</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TOP NAVBAR -->
+<header class="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between gap-4 sticky top-0 z-20">
+<div class="flex items-center gap-4 flex-1">
+<!-- AY Selector -->
+<div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-700">
+<svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>A.Y. 2024–2025 • 1st Semester</span>
+<svg class="w-3.5 h-3.5 text-slate-400 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Student Search Input -->
+<div class="relative flex-1 max-w-md">
+<svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs placeholder:text-slate-400 focus:outline-none focus:border-orange-500 focus:bg-white transition" placeholder="Search Student No, Student Name, Applicant ID, or Degree..." type="text"/>
+</div>
+</div>
+<!-- Top Right Actions -->
+<div class="flex items-center gap-4">
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-[#ea580c] hover:bg-orange-700 text-white rounded-lg text-xs font-semibold shadow-sm shadow-orange-500/20 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>New Enrollment</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg relative transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="w-2 h-2 rounded-full bg-orange-500 absolute top-2 right-2 ring-2 ring-white"></span>
+</button>
+<div class="flex items-center gap-3 pl-3 border-l border-slate-200">
+<div class="w-8 h-8 rounded-full bg-orange-100 border border-orange-200 flex items-center justify-between overflow-hidden">
+<img alt="Maria Santos" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div>
+<div class="text-xs font-bold text-slate-800 leading-tight">Maria Santos</div>
+<div class="text-[10px] text-slate-500 font-medium">Registrar Staff</div>
+</div>
+</div>
+</div>
+</header>
+<!-- PAGE BODY -->
+<div class="p-8 space-y-6 flex-1 max-w-[1600px] w-full mx-auto">
+<!-- HEADER TITLE CARD -->
+<div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="inline-flex items-center gap-2 px-2.5 py-1 bg-orange-50 border border-orange-200/60 rounded-md text-[11px] font-semibold text-orange-700 uppercase tracking-wide mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+              Central Records &amp; Student Roster
+            </div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">
+              Student Directory &amp; <span class="text-[#ea580c]">Academic Records Master</span>
+</h1>
+<p class="text-xs text-slate-500 mt-1">
+              Integrated relational ledger mapped to <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">student</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">student_profile</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">department</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">program</code>, &amp; <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700">enrollment</code> tables.
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Export Master List (CSV)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-[#ea580c] hover:bg-orange-700 text-white text-xs font-semibold rounded-xl shadow-sm shadow-orange-500/20 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Register New Student</span>
+</button>
+</div>
+</div>
+<!-- KPI SUMMARY METRICS -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total Registered</span>
+<div class="w-8 h-8 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-2">3,420</div>
+<div class="text-[11px] text-emerald-600 font-semibold mt-1 flex items-center gap-1">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M5 10l7-7m0 0l7 7m-7-7v18" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              +12.4% vs last academic year
+            </div>
+</div>
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Freshmen Intake</span>
+<div class="w-8 h-8 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-2">1,840</div>
+<div class="text-[11px] text-slate-500 font-medium mt-1">Direct Senior High Graduates</div>
+</div>
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Transferee Tier</span>
+<div class="w-8 h-8 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-2">428</div>
+<div class="text-[11px] text-purple-600 font-medium mt-1">Credited via TOR review</div>
+</div>
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Active Clearances</span>
+<div class="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-2">98.4%</div>
+<div class="text-[11px] text-emerald-600 font-semibold mt-1">3,365 students fully cleared</div>
+</div>
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Departments Active</span>
+<div class="w-8 h-8 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-2">6 Depts</div>
+<div class="text-[11px] text-slate-500 font-medium mt-1">14 Degree Programs</div>
+</div>
+</div>
+<!-- MAIN LAYOUT: DIRECTORY TABLE & SELECTED STUDENT DETAIL INSPECTOR -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+<!-- DIRECTORY TABLE (8 COLS) -->
+<div class="xl:col-span-8 bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Filter Toolbar -->
+<div class="p-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-[#ea580c] text-white text-xs font-semibold">All (3,420)</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition">BS Information Tech (1,140)</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition">BS Computer Science (880)</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition">BS Nursing (740)</button>
+</div>
+<div class="flex items-center gap-2">
+<select class="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 focus:outline-none">
+<option>Filter by Classification: All Types</option>
+<option>Freshman</option>
+<option>Transferee</option>
+<option>Continuing Regular</option>
+<option>Irregular / Cross-Enrollee</option>
+</select>
+<select class="px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 focus:outline-none">
+<option>Sort: Student No (Asc)</option>
+<option>GWA (Highest First)</option>
+<option>Enrollment Date</option>
+</select>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/80 border-b border-slate-100 text-[11px] uppercase tracking-wider text-slate-400 font-bold">
+<th class="py-3 px-4">Student ID &amp; Name</th>
+<th class="py-3 px-4">Program &amp; Department</th>
+<th class="py-3 px-4">Year &amp; Type</th>
+<th class="py-3 px-4">Clearance &amp; Status</th>
+<th class="py-3 px-4">GWA &amp; Units</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs text-slate-700 font-normal">
+<!-- Row 1 (Active / Selected) -->
+<tr class="bg-orange-50/40 hover:bg-orange-50/60 transition cursor-pointer border-l-4 border-l-[#ea580c]">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center text-xs shrink-0 ring-2 ring-orange-400">
+                          JM
+                        </div>
+<div>
+<div class="font-bold text-slate-900">Juan Miguel Dela Cruz</div>
+<div class="text-[11px] text-orange-700 font-mono font-medium">SN: 2024-10492</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-slate-900">BS Information Technology</div>
+<div class="text-[11px] text-slate-500">Dept of Computing Studies</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-slate-800">1st Year • Regular</div>
+<span class="badge-pill bg-blue-100 text-blue-700 text-[10px]">Freshman</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-semibold text-emerald-700">Enrolled (Cleared)</span>
+</div>
+<div class="text-[11px] text-slate-500">COR Released #ENR-4402</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-slate-900">1.35 GWA</div>
+<div class="text-[11px] text-slate-500">21.0 Units Enrolled</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 bg-white border border-slate-200 hover:border-orange-400 text-orange-600 rounded-lg text-xs font-semibold shadow-2xs">Inspect</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/70 transition cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xs shrink-0">
+                          AV
+                        </div>
+<div>
+<div class="font-bold text-slate-900">Alicia Vance</div>
+<div class="text-[11px] text-slate-500 font-mono">SN: 2024-10384</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-slate-900">BS Computer Science</div>
+<div class="text-[11px] text-slate-500">Dept of Computing Studies</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-slate-800">2nd Year Standing</div>
+<span class="badge-pill bg-purple-100 text-purple-700 text-[10px]">Transferee</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-semibold text-amber-700">Evaluation Approved</span>
+</div>
+<div class="text-[11px] text-slate-500">Ready for Blocking</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-slate-900">1.25 GWA</div>
+<div class="text-[11px] text-slate-500">18.0 Credited Units</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-xs font-medium">Inspect</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/70 transition cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs shrink-0">
+                          SM
+                        </div>
+<div>
+<div class="font-bold text-slate-900">Sofia Mae Alcantara</div>
+<div class="text-[11px] text-slate-500 font-mono">SN: 2024-00192</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-slate-900">BS Computer Science</div>
+<div class="text-[11px] text-slate-500">Dept of Computing Studies</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-slate-800">1st Year • Regular</div>
+<span class="badge-pill bg-blue-100 text-blue-700 text-[10px]">Freshman</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-semibold text-amber-700">Pending Admission</span>
+</div>
+<div class="text-[11px] text-slate-500">Docs under review</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-slate-900">1.40 GWA</div>
+<div class="text-[11px] text-slate-500">Form 137 Attached</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-xs font-medium">Inspect</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/70 transition cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs shrink-0">
+                          JC
+                        </div>
+<div>
+<div class="font-bold text-slate-900">Juan Carlos Del Rosario</div>
+<div class="text-[11px] text-slate-500 font-mono">SN: 2024-00188</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-slate-900">BS Information Technology</div>
+<div class="text-[11px] text-slate-500">Dept of Computing Studies</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-slate-800">2nd Year • Section 2A</div>
+<span class="badge-pill bg-emerald-100 text-emerald-700 text-[10px]">Continuing</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+<span class="font-semibold text-indigo-700">Ready for Blocking</span>
+</div>
+<div class="text-[11px] text-slate-500">Clinic Cleared</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-slate-900">1.60 GWA</div>
+<div class="text-[11px] text-slate-500">21.0 Allocated Units</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-xs font-medium">Inspect</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/70 transition cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center text-xs shrink-0">
+                          BC
+                        </div>
+<div>
+<div class="font-bold text-slate-900">Beatriz Clara Villanueva</div>
+<div class="text-[11px] text-slate-500 font-mono">SN: 2023-01442</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-slate-900">BS Nursing</div>
+<div class="text-[11px] text-slate-500">Dept of Health Sciences</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-slate-800">2nd Year Standing</div>
+<span class="badge-pill bg-purple-100 text-purple-700 text-[10px]">Transferee</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-rose-500"></span>
+<span class="font-semibold text-rose-700">Awaiting Payment</span>
+</div>
+<div class="text-[11px] text-slate-500">Cashier pending ₱24.5k</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-slate-900">1.20 GWA</div>
+<div class="text-[11px] text-slate-500">Block Clinical Sec 2</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-xs font-medium">Inspect</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50/70 transition cursor-pointer">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-xs shrink-0">
+                          GM
+                        </div>
+<div>
+<div class="font-bold text-slate-900">Gabriel Marcus Tan</div>
+<div class="text-[11px] text-slate-500 font-mono">SN: 2022-00511</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-slate-900">BS Civil Engineering</div>
+<div class="text-[11px] text-slate-500">Dept of Engineering &amp; Tech</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-slate-800">3rd Year • Regular</div>
+<span class="badge-pill bg-emerald-100 text-emerald-700 text-[10px]">Continuing</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-semibold text-emerald-700">Officially Enrolled</span>
+</div>
+<div class="text-[11px] text-slate-500">All clearances verified</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-slate-900">1.55 GWA</div>
+<div class="text-[11px] text-slate-500">23.0 Units Enrolled</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-xs font-medium">Inspect</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-4 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
+<span class="text-xs text-slate-500 font-medium">Showing 1 to 6 of 3,420 registered student records</span>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-500 hover:bg-slate-50 disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 bg-[#ea580c] text-white rounded-md text-xs font-bold">1</button>
+<button class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600 hover:bg-slate-50">2</button>
+<button class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600 hover:bg-slate-50">3</button>
+<span class="px-2 text-xs text-slate-400">...</span>
+<button class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600 hover:bg-slate-50">570</button>
+<button class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600 hover:bg-slate-50">Next</button>
+</div>
+</div>
+</div>
+<!-- SELECTED STUDENT DOSSIER / INSPECTOR (4 COLS) -->
+<div class="xl:col-span-4 space-y-6">
+<!-- Student Header Dossier Card -->
+<div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl bg-orange-100 border-2 border-orange-300 flex items-center justify-center text-orange-700 font-bold text-xl overflow-hidden shadow-xs">
+<img alt="Juan Miguel Dela Cruz" class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div>
+<span class="badge-pill bg-emerald-100 text-emerald-800 text-[10px] mb-1">Active Matriculation</span>
+<h3 class="text-base font-bold text-slate-900 leading-snug">Juan Miguel Dela Cruz</h3>
+<div class="text-xs font-mono font-bold text-orange-600">ID: 2024-10492</div>
+</div>
+</div>
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Tabs inside dossier -->
+<div class="mt-6 border-b border-slate-100 flex items-center gap-4 text-xs font-semibold">
+<button class="pb-2.5 border-b-2 border-[#ea580c] text-orange-600">Profile &amp; Guardian</button>
+<button class="pb-2.5 text-slate-400 hover:text-slate-700">Enrolled Subjects (3)</button>
+<button class="pb-2.5 text-slate-400 hover:text-slate-700">Clearance Stations</button>
+</div>
+<!-- Dossier Details (Relational Data Mapping) -->
+<div class="mt-5 space-y-4 text-xs">
+<div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Relational Schema: `student` &amp; `student_profile`</span>
+<div class="grid grid-cols-2 gap-3 mt-2 bg-slate-50 p-3 rounded-xl border border-slate-100">
+<div>
+<span class="text-slate-400 text-[10px] block">Birth Date / Sex</span>
+<span class="font-semibold text-slate-800">April 18, 2005 • Male</span>
+</div>
+<div>
+<span class="text-slate-400 text-[10px] block">Contact Number</span>
+<span class="font-semibold text-slate-800">+63 917 849 2011</span>
+</div>
+<div class="col-span-2">
+<span class="text-slate-400 text-[10px] block">Institutional Email</span>
+<span class="font-semibold text-slate-800">juan.delacruz@email.com</span>
+</div>
+<div class="col-span-2">
+<span class="text-slate-400 text-[10px] block">Permanent Residential Address</span>
+<span class="font-medium text-slate-700">124 Rizal Ave, Brgy. San Jose, Pasig City</span>
+</div>
+</div>
+</div>
+<div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Guardian &amp; Previous School Info</span>
+<div class="space-y-2 mt-2 bg-slate-50 p-3 rounded-xl border border-slate-100">
+<div class="flex justify-between items-center">
+<span class="text-slate-500">Legal Guardian:</span>
+<span class="font-bold text-slate-800">Roberto Dela Cruz (Father)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500">Guardian Contact:</span>
+<span class="font-semibold text-slate-800">+63 918 332 9901</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500">Previous School:</span>
+<span class="font-semibold text-slate-800">St. Jude Science High</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500">Strand / Last GWA:</span>
+<span class="font-bold text-[#ea580c]">STEM Strand • 1.35 GWA</span>
+</div>
+</div>
+</div>
+<!-- Database Relation Tracker -->
+<div class="p-3 bg-orange-50/70 border border-orange-200/70 rounded-xl space-y-2">
+<div class="flex items-center justify-between text-[11px] font-bold text-orange-900">
+<span>Database Foreign Keys</span>
+<span class="font-mono text-[10px] text-orange-700">StudentID: 10492</span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-[10px] text-slate-600 font-mono">
+<div class="bg-white p-1.5 rounded border border-orange-100">ProgramID: 01 (BSIT)</div>
+<div class="bg-white p-1.5 rounded border border-orange-100">DeptID: 03 (Computing)</div>
+<div class="bg-white p-1.5 rounded border border-orange-100">EvaluationID: 2024-09</div>
+<div class="bg-white p-1.5 rounded border border-orange-100">PaymentID: 99412</div>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="pt-2 grid grid-cols-2 gap-2">
+<button class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+<svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Print Transcript</span>
+</button>
+<button class="w-full py-2.5 bg-[#ea580c] hover:bg-orange-700 text-white font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm shadow-orange-500/20 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span>Edit Profile Data</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Login & Authentication Activity Ledger -->
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+<svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  Security &amp; Access Record (`login`)
+                </span>
+<span class="badge-pill bg-emerald-100 text-emerald-700 text-[10px]">Account Active</span>
+</div>
+<div class="space-y-2 text-[11px] text-slate-600">
+<div class="flex justify-between">
+<span class="text-slate-400">Account Username:</span>
+<span class="font-mono font-bold text-slate-800">student.delacruz</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Last Authentication:</span>
+<span class="font-semibold text-slate-700">2024-08-15 11:24 PHT</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Registered By Staff:</span>
+<span class="font-semibold text-slate-700">Maria Santos (ID #14)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- PERSISTENT SYSTEM FOOTER -->
+<footer class="h-10 bg-white border-t border-slate-200 px-8 flex items-center justify-between text-[11px] text-slate-500 shrink-0">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-medium text-slate-700">All Systems Operational</span>
+</div>
+<span>•</span>
+<span>DB Connected (22 Tables)</span>
+<span>•</span>
+<span>Active Session ID: VR-REG-2024-8849</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect>
+<path d="M7 11V7a5 5 0 0110 0v4"></path>
+</svg>
+<span>256-Bit SSL Encrypted Campus Node</span>
+</div>
+</footer>
+</body>
+</html>

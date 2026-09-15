@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEAIT Enrolment Platform - Student Admission &amp; Records Operations</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              accent: '#FF6B00',
+              peach: '#FFF5ED',
+              cream: '#FFF0E5'
+            }
+          },
+          fontFamily: {
+            sans: ['Arial', 'Helvetica', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.5rem',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #334155;
+      background-color: #fafaf9;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 20px -2px rgba(234, 88, 12, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease-in-out;
+    }
+    .card-shadow:hover {
+      box-shadow: 0 10px 25px -3px rgba(234, 88, 12, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+    }
+    .subtle-ring {
+      box-shadow: 0 0 0 1px rgba(254, 215, 170, 0.6);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fafaf9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #fdba74;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAF9] text-slate-700 antialiased selection:bg-brand-500 selection:text-white flex min-h-screen">
+<!-- Ambient decorative floating dots matching landing template -->
+<div aria-hidden="true" class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+<span class="absolute w-2.5 h-2.5 rounded-full bg-brand-500/25 top-8 left-80"></span>
+<span class="absolute w-3 h-3 rounded-full bg-orange-300/30 top-32 right-32"></span>
+<span class="absolute w-2 h-2 rounded-full bg-amber-400/30 top-[40rem] left-96"></span>
+<span class="absolute w-4 h-4 rounded-full bg-brand-200/40 bottom-12 right-72"></span>
+</div>
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-white border-r border-orange-100/80 z-50 flex flex-col justify-between shadow-sm">
+<div class="flex flex-col">
+<!-- Brand Logo Header exactly matching Screen 3 -->
+<div class="h-20 px-6 flex items-center gap-3 border-b border-orange-100/60 bg-white">
+<img alt="SEAIT Seal" class="h-11 w-11 object-contain rounded-full shadow-sm ring-1 ring-orange-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjVBxgDq26mpHL_eFrk13lPKTeCTO-_t2ie8cw8y16afdrdRsQC7cBj7OjlQdjM1LAeG8XfTDQZks65B8tOhVUcVxR_SN4UaLUEBxN7NnW1PaZ3zoP9dRSJklejbPV5BvRD7zIp96vz2xrSPAAcH8s7pXJ4xC-Ht5pMGoKU8-nMWBflUTQeOR4BtH7dhGm-UhjydPzMboDsyogcRdKthrH3r7bfHCja15qr-mdUgDDwkTtX7_nCjGpKQvK5lTTe2c_ZQ"/>
+<div class="flex flex-col">
+<span class="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
+            SEAIT <span class="text-brand-600">EduTech</span>
+</span>
+<span class="text-[10px] uppercase font-semibold text-slate-500 tracking-wider mt-1">Enrolment Platform</span>
+</div>
+</div>
+<!-- Navigation Section Label -->
+<div class="px-6 pt-5 pb-2">
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Academic Navigation</span>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col px-3 gap-1">
+<a aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-brand-600 text-white font-bold text-sm shadow-md shadow-brand-500/20 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span>Dashboard / Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-semibold text-sm hover:bg-brand-50 hover:text-brand-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+<span>Admission &amp; Registration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-semibold text-sm hover:bg-brand-50 hover:text-brand-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Academic Evaluation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-semibold text-sm hover:bg-brand-50 hover:text-brand-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_view_week</span>
+<span>Sectioning &amp; Blocking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-semibold text-sm hover:bg-brand-50 hover:text-brand-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Enrollment &amp; Payment</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-semibold text-sm hover:bg-brand-50 hover:text-brand-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span>Student Directory</span>
+</a>
+</nav>
+</div>
+<!-- Authorized Terminal Footer Card -->
+<div class="p-4 mx-3 mb-4 rounded-2xl bg-brand-peach border border-orange-200/70">
+<div class="flex items-center gap-1.5 text-brand-600 font-bold text-xs mb-1">
+<span class="material-symbols-outlined text-[17px]">verified</span>
+<span>Authorized Terminal</span>
+</div>
+<p class="text-[11px] text-slate-500 leading-snug">Office of the University Registrar • Official Record Access Tier 1</p>
+</div>
+</aside>
+<!-- Content Container with pl-72 for Sidebar offset -->
+<div class="pl-72 flex flex-col min-h-screen flex-1 w-full bg-[#FAFAF9]">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 left-72 right-0 h-20 bg-white/95 backdrop-blur-md border-b border-orange-100/70 z-40 flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1 max-w-2xl">
+<!-- Academic Term Selector -->
+<div class="flex items-center gap-2 bg-brand-peach border border-orange-200/80 px-3.5 py-2 rounded-full text-slate-800 text-xs font-bold shrink-0 shadow-sm cursor-pointer hover:border-brand-300 transition-colors">
+<span class="material-symbols-outlined text-[17px] text-brand-600">calendar_month</span>
+<span>A.Y. 2024–2025 • 1st Semester</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">expand_more</span>
+</div>
+<!-- Global Quick Search -->
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[19px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-slate-50 border border-slate-200/90 text-slate-800 placeholder:text-slate-400 text-xs rounded-full focus:outline-none focus:border-brand-500 focus:bg-white transition-all shadow-sm" placeholder="Search Student No, Student Name, Applicant ID..." type="search"/>
+</div>
+</div>
+<!-- Top Right Actions & User Profile -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-brand-600 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-md shadow-brand-500/25 hover:bg-brand-700 hover:shadow-lg transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Enrollment</span>
+</button>
+<button class="relative p-2.5 rounded-full text-slate-500 hover:bg-brand-50 hover:text-brand-600 border border-transparent hover:border-orange-100 transition-colors" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[21px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-brand-600 ring-2 ring-white"></span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-1"></div>
+<!-- Staff Profile Container with Image 23 -->
+<div class="flex items-center gap-2.5 pl-1 cursor-pointer">
+<img alt="Maria Santos Profile" class="w-9 h-9 rounded-full object-cover shadow-sm ring-2 ring-orange-200" src="https://lh3.googleusercontent.com/aida/AEtjO1UqTeZEfKtpu_B6Ii6A8kB1G3S6ysbtsxF3lxd4S6AfoRztkLu3UAGo6u_6pUqsBoQQQiJMKhf9JYEgH6Y29ulKHrDT1Vx_UQqHWkmmxXrcGYOn_hkcjF8a2c-1zrnXxUFQSJiNNBxvT6ZHG53HDWgw4yEei-fi2rEaA5fjUipyGvVw35Y03FIrQjAyjf3-nAw-0p-eKzWV-wLddjl18wbRlRS788AaqZN4-cUtFGnMowqXmovkqtRcjyM"/>
+<div class="flex flex-col text-left">
+<span class="text-xs font-bold text-slate-900 leading-tight">Maria Santos</span>
+<span class="text-[11px] text-brand-600 font-semibold leading-tight">Registrar Staff</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="w-full pt-24 px-8 pb-10 flex-1 flex flex-col gap-6">
+<!-- Section: Operations Header Banner -->
+<section class="bg-white rounded-3xl p-7 border border-orange-100/90 card-shadow relative overflow-hidden">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 z-10 relative">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-wider border border-brand-200">
+<span class="w-2 h-2 rounded-full bg-brand-600 animate-ping"></span>
+                Registrar Operations Command
+              </span>
+</div>
+<h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Academic Year <span class="text-brand-600">2024–2025</span>
+</h1>
+<p class="text-xs sm:text-sm text-slate-500">
+              1st Semester Real-time Matriculation Intake &amp; Clearance Pipeline Monitor
+            </p>
+</div>
+<div class="flex items-center gap-3 self-start md:self-auto">
+<span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-peach text-brand-700 text-xs font-bold border border-orange-200/70">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Live Sync Active
+            </span>
+<button class="flex items-center gap-2 px-4 py-2 bg-white hover:bg-brand-50 border border-slate-200 hover:border-brand-300 text-slate-700 hover:text-brand-600 rounded-full text-xs font-bold shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[17px]">file_download</span>
+<span>Export Summary</span>
+</button>
+</div>
+</div>
+<!-- Subtle Background Glow Accent -->
+<div class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-gradient-to-br from-brand-100/40 to-transparent pointer-events-none"></div>
+</section>
+<!-- Section: 5 Metric Cards Strip -->
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+<!-- 1. Total Enrolled -->
+<div class="bg-white p-5 rounded-2xl border border-slate-100 card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total Enrolled</span>
+<div class="w-8 h-8 rounded-lg bg-orange-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">school</span>
+</div>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-black text-slate-900 tracking-tight">3,420</span>
+<div class="flex items-center gap-1 text-[11px] font-bold text-emerald-600 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+12.4% vs last term</span>
+</div>
+</div>
+</div>
+<!-- 2. Pending Admissions -->
+<div class="bg-white p-5 rounded-2xl border border-slate-100 card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Pending Intake</span>
+<div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+</div>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-black text-slate-900 tracking-tight">148</span>
+<p class="text-[11px] font-medium text-slate-400 mt-1">Awaiting document intake</p>
+</div>
+</div>
+<!-- 3. Subject Crediting -->
+<div class="bg-white p-5 rounded-2xl border border-slate-100 card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Subject Crediting</span>
+<div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+</div>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-black text-slate-900 tracking-tight">64</span>
+<p class="text-[11px] font-medium text-slate-400 mt-1">Dean review queued</p>
+</div>
+</div>
+<!-- 4. Pending Cashier -->
+<div class="bg-white p-5 rounded-2xl border border-slate-100 card-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Pending Cashier</span>
+<div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-black text-slate-900 tracking-tight">92</span>
+<div class="flex items-center gap-1 text-[11px] font-bold text-rose-600 mt-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span>
+<span>Assessment verified</span>
+</div>
+</div>
+</div>
+<!-- 5. ID Validated -->
+<div class="bg-white p-5 rounded-2xl border border-slate-100 card-shadow flex flex-col justify-between col-span-2 md:col-span-1">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">ID Validated</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-black text-slate-900 tracking-tight">2,890</span>
+<div class="flex items-center gap-1 text-[11px] font-bold text-brand-600 mt-1">
+<span>84.5% cohort ready</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: 6-Stage Matriculation Pipeline Progression -->
+<section class="bg-white p-6 rounded-3xl border border-orange-100 card-shadow flex flex-col gap-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<h2 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+              Enrollment Pipeline <span class="text-brand-600">Progression</span>
+</h2>
+<p class="text-xs text-slate-500">Official institutional matriculation stages for incoming &amp; continuing students</p>
+</div>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200 self-start sm:self-auto">
+            Stage 4 Active Load
+          </span>
+</div>
+<!-- Stepper Graphic Timeline -->
+<div class="relative w-full pt-2 overflow-x-auto">
+<div class="min-w-[760px] grid grid-cols-6 gap-2 relative">
+<!-- Stage 1 -->
+<div class="flex flex-col items-center text-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-500/20 mb-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="text-xs font-bold text-slate-800">1. Admission</span>
+<span class="text-[11px] text-slate-400">148 in queue</span>
+</div>
+<!-- Stage 2 -->
+<div class="flex flex-col items-center text-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-500/20 mb-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="text-xs font-bold text-slate-800">2. Medical</span>
+<span class="text-[11px] text-slate-400">94% cleared</span>
+</div>
+<!-- Stage 3 -->
+<div class="flex flex-col items-center text-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-500/20 mb-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="text-xs font-bold text-slate-800">3. Evaluation</span>
+<span class="text-[11px] text-slate-400">64 reviewing</span>
+</div>
+<!-- Stage 4 (Active Focus) -->
+<div class="flex flex-col items-center text-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-500/30 mb-2 ring-4 ring-orange-200">
+<span class="material-symbols-outlined text-[20px]">calendar_view_week</span>
+</div>
+<span class="text-xs font-extrabold text-brand-600">4. Section Block</span>
+<span class="text-[11px] text-slate-500 font-semibold">53 processing</span>
+</div>
+<!-- Stage 5 -->
+<div class="flex flex-col items-center text-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-orange-50 group-hover:text-brand-600 flex items-center justify-center mb-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<span class="text-xs font-semibold text-slate-600">5. Assessment</span>
+<span class="text-[11px] text-slate-400">92 awaiting</span>
+</div>
+<!-- Stage 6 -->
+<div class="flex flex-col items-center text-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-orange-50 group-hover:text-brand-600 flex items-center justify-center mb-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<span class="text-xs font-semibold text-slate-600">6. ID &amp; Enrolled</span>
+<span class="text-[11px] text-slate-400">3,420 completed</span>
+</div>
+</div>
+<!-- Progress Bar Track -->
+<div class="min-w-[760px] h-2 bg-slate-100 rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-emerald-500 via-brand-500 to-brand-600 rounded-full transition-all duration-500" style="width: 62%;"></div>
+</div>
+</div>
+</section>
+<!-- Two-Column Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left 8-cols: Candidate Queue Table with Filters -->
+<section class="lg:col-span-8 flex flex-col gap-4">
+<div class="bg-white rounded-3xl border border-orange-100 card-shadow overflow-hidden">
+<!-- Table Header & Controls -->
+<div class="p-6 border-b border-orange-100/70 flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h2 class="text-lg font-bold text-slate-900 tracking-tight">
+                    Recent Enrollment <span class="text-brand-600">Queue</span>
+</h2>
+<p class="text-xs text-slate-500">Real-time candidate workflow roster awaiting registrar clearance</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">filter_list</span>
+<input class="h-9 pl-9 pr-3 bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-full focus:outline-none focus:border-brand-500 focus:bg-white w-48 transition-all" id="queueSearch" placeholder="Filter roster..." type="text"/>
+</div>
+<button class="h-9 w-9 flex items-center justify-center bg-slate-50 border border-slate-200 hover:border-brand-300 hover:text-brand-600 rounded-full text-slate-500 transition-colors" title="Reload queue">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Filter Pills matching Screen 3 styling -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 text-nowrap">
+<button class="tab-filter active px-4 py-1.5 rounded-full text-xs font-bold bg-brand-600 text-white shadow-sm shadow-brand-500/20 transition-all" data-filter="all">
+                  All (1,240)
+                </button>
+<button class="tab-filter px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-peach text-slate-700 hover:bg-brand-100 hover:text-brand-700 transition-all border border-orange-200/70" data-filter="pending-admission">
+                  Pending Admission (148)
+                </button>
+<button class="tab-filter px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-peach text-slate-700 hover:bg-brand-100 hover:text-brand-700 transition-all border border-orange-200/70" data-filter="awaiting-payment">
+                  Awaiting Payment (92)
+                </button>
+<button class="tab-filter px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-peach text-slate-700 hover:bg-brand-100 hover:text-brand-700 transition-all border border-orange-200/70" data-filter="ready-blocking">
+                  Ready for Blocking (53)
+                </button>
+<button class="tab-filter px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-peach text-slate-700 hover:bg-brand-100 hover:text-brand-700 transition-all border border-orange-200/70" data-filter="officially-enrolled">
+                  Officially Enrolled (3,420)
+                </button>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-brand-50/70 text-slate-500 text-[11px] font-bold uppercase tracking-wider h-11 border-b border-orange-100/80">
+<th class="px-5">Student No</th>
+<th class="px-5">Student Name</th>
+<th class="px-5">Academic Program</th>
+<th class="px-5">Stage &amp; Status</th>
+<th class="px-5">Term</th>
+<th class="px-5">Staff</th>
+<th class="px-5 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs text-slate-700 font-medium">
+<!-- Row 1 -->
+<tr class="hover:bg-brand-50/40 transition-colors h-14">
+<td class="px-5 font-bold text-brand-600">2024-00192</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Alcantara, Sofia Mae</span>
+<span class="text-[10px] text-slate-400">Applicant ID: APP-8921</span>
+</div>
+</td>
+<td class="px-5">
+<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-semibold">BS Computer Science</span>
+</td>
+<td class="px-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 font-bold text-[11px] border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        Pending Admission
+                      </span>
+</td>
+<td class="px-5 text-slate-500">AY 24-25 • 1st</td>
+<td class="px-5">
+<span class="text-slate-600 font-semibold">M. Santos</span>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 bg-brand-600 text-white rounded-full font-bold text-xs hover:bg-brand-700 transition-colors shadow-sm shadow-brand-500/20" type="button">
+                          Process
+                        </button>
+<button class="p-1.5 text-slate-400 hover:text-brand-600 hover:bg-orange-50 rounded-full transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-brand-50/40 transition-colors h-14">
+<td class="px-5 font-bold text-brand-600">2024-00188</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Del Rosario, Juan Carlos</span>
+<span class="text-[10px] text-slate-400">Applicant ID: APP-8840</span>
+</div>
+</td>
+<td class="px-5">
+<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-semibold">BS Information Tech</span>
+</td>
+<td class="px-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-purple-700 font-bold text-[11px] border border-purple-200">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        Ready for Blocking
+                      </span>
+</td>
+<td class="px-5 text-slate-500">AY 24-25 • 1st</td>
+<td class="px-5">
+<span class="text-slate-600 font-semibold">R. Fernandez</span>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 bg-brand-600 text-white rounded-full font-bold text-xs hover:bg-brand-700 transition-colors shadow-sm shadow-brand-500/20" type="button">
+                          Assign Block
+                        </button>
+<button class="p-1.5 text-slate-400 hover:text-brand-600 hover:bg-orange-50 rounded-full transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-brand-50/40 transition-colors h-14">
+<td class="px-5 font-bold text-brand-600">2023-01442</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Villanueva, Beatriz Clara</span>
+<span class="text-[10px] text-slate-400">Transferee • 2nd Year</span>
+</div>
+</td>
+<td class="px-5">
+<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-semibold">BS Nursing</span>
+</td>
+<td class="px-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-700 font-bold text-[11px] border border-rose-200">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                        Awaiting Payment
+                      </span>
+</td>
+<td class="px-5 text-slate-500">AY 24-25 • 1st</td>
+<td class="px-5">
+<span class="text-slate-600 font-semibold">M. Santos</span>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-full font-bold text-xs hover:bg-brand-50 hover:text-brand-600 border border-slate-200 transition-colors" type="button">
+                          Notify
+                        </button>
+<button class="p-1.5 text-slate-400 hover:text-brand-600 hover:bg-orange-50 rounded-full transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-brand-50/40 transition-colors h-14">
+<td class="px-5 font-bold text-brand-600">2022-00511</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Tan, Gabriel Marcus</span>
+<span class="text-[10px] text-slate-400">Regular • 3rd Year</span>
+</div>
+</td>
+<td class="px-5">
+<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-semibold">BS Civil Engineering</span>
+</td>
+<td class="px-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[11px] border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        Officially Enrolled
+                      </span>
+</td>
+<td class="px-5 text-slate-500">AY 24-25 • 1st</td>
+<td class="px-5">
+<span class="text-slate-600 font-semibold">L. Ramos</span>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 bg-brand-peach text-brand-700 border border-orange-200 rounded-full font-bold text-xs hover:bg-brand-600 hover:text-white transition-colors" type="button">
+                          Print COR
+                        </button>
+<button class="p-1.5 text-slate-400 hover:text-brand-600 hover:bg-orange-50 rounded-full transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-brand-50/40 transition-colors h-14">
+<td class="px-5 font-bold text-brand-600">2024-00204</td>
+<td class="px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Bautista, Alyssa Jane</span>
+<span class="text-[10px] text-slate-400">Applicant ID: APP-9014</span>
+</div>
+</td>
+<td class="px-5">
+<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-[11px] font-semibold">BS Accountancy</span>
+</td>
+<td class="px-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 font-bold text-[11px] border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        Pending Admission
+                      </span>
+</td>
+<td class="px-5 text-slate-500">AY 24-25 • 1st</td>
+<td class="px-5">
+<span class="text-slate-600 font-semibold">M. Santos</span>
+</td>
+<td class="px-5 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-3 py-1.5 bg-brand-600 text-white rounded-full font-bold text-xs hover:bg-brand-700 transition-colors shadow-sm shadow-brand-500/20" type="button">
+                          Process
+                        </button>
+<button class="p-1.5 text-slate-400 hover:text-brand-600 hover:bg-orange-50 rounded-full transition-colors" title="View Dossier">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Pagination Controls -->
+<div class="p-4 bg-brand-peach/50 border-t border-orange-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+<span>Showing 5 of 1,240 students in active queue</span>
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-slate-600 hover:border-brand-300 hover:text-brand-600 transition-colors font-semibold">Previous</button>
+<button class="px-3 py-1.5 bg-brand-600 text-white rounded-full font-bold shadow-sm">1</button>
+<button class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-slate-600 hover:border-brand-300 hover:text-brand-600 transition-colors font-semibold">2</button>
+<button class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-slate-600 hover:border-brand-300 hover:text-brand-600 transition-colors font-semibold">3</button>
+<button class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-slate-600 hover:border-brand-300 hover:text-brand-600 transition-colors font-semibold">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right 4-cols: Operations, Quota Gauges & Station Completion -->
+<aside class="lg:col-span-4 flex flex-col gap-5">
+<!-- 1. Direct Operations Action Cards -->
+<div class="bg-white p-5 rounded-3xl border border-orange-100 card-shadow flex flex-col gap-3">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Direct Operations</span>
+<div class="flex flex-col gap-2.5">
+<a class="flex items-center justify-between p-3.5 bg-brand-600 text-white rounded-2xl shadow-md shadow-brand-500/20 hover:bg-brand-700 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span class="text-xs font-bold">New Student Admission Form</span>
+</div>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3.5 bg-brand-peach border border-orange-200/70 hover:border-brand-300 text-slate-800 hover:text-brand-700 rounded-2xl transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-brand-600">group_work</span>
+<span class="text-xs font-bold">Batch Section Blocking</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-brand-600 group-hover:translate-x-0.5 transition-all">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3.5 bg-brand-peach border border-orange-200/70 hover:border-brand-300 text-slate-800 hover:text-brand-700 rounded-2xl transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-brand-600">print</span>
+<span class="text-xs font-bold">Generate Assessment Form (COR)</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-brand-600 group-hover:translate-x-0.5 transition-all">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 2. College Quota Intake -->
+<div class="bg-white p-5 rounded-3xl border border-orange-100 card-shadow flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-base font-bold text-slate-900 tracking-tight">
+                  College Quota <span class="text-brand-600">Intake</span>
+</h3>
+<p class="text-[11px] text-slate-400">Class size saturation thresholds</p>
+</div>
+<span class="material-symbols-outlined text-brand-600 text-[20px]">pie_chart</span>
+</div>
+<div class="flex flex-col gap-3.5">
+<!-- College of Computer Studies -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-800">College of Computer Studies</span>
+<span class="text-brand-600">84% Filled</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-brand-600 h-full rounded-full" style="width: 84%;"></div>
+</div>
+<span class="text-[10px] text-slate-400">840 / 1,000 slots utilized</span>
+</div>
+<!-- College of Engineering -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-800">College of Engineering</span>
+<span class="text-amber-600">72% Filled</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full rounded-full" style="width: 72%;"></div>
+</div>
+<span class="text-[10px] text-slate-400">576 / 800 slots utilized</span>
+</div>
+<!-- College of Business -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-800">College of Business</span>
+<span class="text-rose-600">91% (Near Quota)</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full rounded-full" style="width: 91%;"></div>
+</div>
+<span class="text-[10px] text-slate-400">1,092 / 1,200 slots utilized</span>
+</div>
+</div>
+</div>
+<!-- 3. Daily Clearance Stations Status -->
+<div class="bg-white p-5 rounded-3xl border border-orange-100 card-shadow flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-base font-bold text-slate-900 tracking-tight">
+                  Clearance <span class="text-brand-600">Stations</span>
+</h3>
+<p class="text-[11px] text-slate-400">Today's campus node velocity</p>
+</div>
+<span class="material-symbols-outlined text-brand-600 text-[20px]">hub</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Clinic -->
+<div class="bg-brand-peach/70 border border-orange-200/60 p-3.5 rounded-2xl flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-slate-500 mb-1">
+<span class="material-symbols-outlined text-[16px] text-brand-600">local_hospital</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Clinic</span>
+</div>
+<span class="text-xl font-black text-slate-900">94%</span>
+<span class="text-[10px] text-slate-500 mt-0.5">380 cleared</span>
+</div>
+<!-- Clearance -->
+<div class="bg-brand-peach/70 border border-orange-200/60 p-3.5 rounded-2xl flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-slate-500 mb-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Clearance</span>
+</div>
+<span class="text-xl font-black text-slate-900">88%</span>
+<span class="text-[10px] text-slate-500 mt-0.5">Dean holds waived</span>
+</div>
+<!-- ID Printing -->
+<div class="bg-brand-peach/70 border border-orange-200/60 p-3.5 rounded-2xl flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-slate-500 mb-1">
+<span class="material-symbols-outlined text-[16px] text-purple-600">smart_card_reader</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">ID Printing</span>
+</div>
+<span class="text-xl font-black text-slate-900">82%</span>
+<span class="text-[10px] text-slate-500 mt-0.5">RFID batch active</span>
+</div>
+<!-- Cashier -->
+<div class="bg-brand-peach/70 border border-orange-200/60 p-3.5 rounded-2xl flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-slate-500 mb-1">
+<span class="material-symbols-outlined text-[16px] text-brand-600">payments</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Cashier</span>
+</div>
+<span class="text-xl font-black text-slate-900 leading-tight">₱4.2M</span>
+<span class="text-[10px] text-slate-500 mt-0.5">Collected today</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Refined Footer matching Screen 3 bottom style -->
+<footer class="h-12 bg-white border-t border-orange-100 px-8 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-bold text-slate-700">All Systems Operational</span>
+</div>
+<span>•</span>
+<span>DB Connected (22 Tables)</span>
+<span>•</span>
+<span>Active Session ID: VR-REG-2024-8849</span>
+</div>
+<div class="flex items-center gap-1.5 text-slate-600 font-semibold">
+<span class="material-symbols-outlined text-[15px] text-brand-600">lock</span>
+<span>256-Bit SSL Encrypted Campus Node</span>
+</div>
+</footer>
+</div>
+<script>
+    // Tab filter interactive micro-behavior
+    document.querySelectorAll('.tab-filter').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.tab-filter').forEach(btn => {
+          btn.classList.remove('bg-brand-600', 'text-white', 'shadow-sm', 'shadow-brand-500/20');
+          btn.classList.add('bg-brand-peach', 'text-slate-700', 'border', 'border-orange-200/70');
+        });
+        button.classList.remove('bg-brand-peach', 'text-slate-700', 'border', 'border-orange-200/70');
+        button.classList.add('bg-brand-600', 'text-white', 'shadow-sm', 'shadow-brand-500/20');
+      });
+    });
+
+    // Client-side quick filter logic
+    const searchInput = document.getElementById('queueSearch');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        document.querySelectorAll('tbody tr').forEach(row => {
+          const text = row.innerText.toLowerCase();
+          row.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    }
+  </script>
+</body></html>
